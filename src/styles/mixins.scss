@@ -1,0 +1,103 @@
+@import './variables';
+@import './functions';
+@import './animations';
+
+@mixin ghost-vertical-align-middle {
+  &:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    width: 0;
+  }
+}
+
+// Elements BEGIN
+@mixin custom-scrollbar($size, $color-thumb, $color-track: "transparent") {
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $color-thumb;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: $color-track;
+  }
+  &::-webkit-scrollbar-thumb {
+    &:active {
+      background-color: rgba($color-thumb, 0.7);
+    }
+  }
+}
+
+%module-layout {
+  width: 100%;
+  padding: 40px 20px;
+}
+
+%link {
+  font-family: $ff-primary;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  color: $link-default-color;
+  transition: color $animation-time;
+  &:hover,
+  &:focus {
+    color: $link-default-hover-color;
+  }
+  &:active {
+    color: $link-default-active-color;
+  }
+}
+
+%button-circular-progress-container {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+// Elements END
+
+%svg-hover-focus-active {
+  cursor: pointer;
+  fill: $color-firm1;
+  transition: fill $animation-time;
+  &:hover,
+  &:focus {
+    fill: $link-default-hover-color;
+  }
+  &:active {
+    fill: $link-default-active-color;
+  }
+}
+
+%hover-focus-active-opacity {
+  cursor: pointer;
+  transition: opacity $animation-time;
+  &:hover,
+  &:focus {
+    opacity: $hover-opacity;
+  }
+  &:active {
+    opacity: $active-opacity;
+  }
+}
+
+%reset-float-parent {
+  &:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+}
+
+%module-mount-animation {
+  will-change: opacity;
+}

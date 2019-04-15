@@ -1,0 +1,23 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: cyan;
+}
+
+.app__main-container {
+  display: flex;
+  height: 100%;
+}
+
+.app__content {
+  @include custom-scrollbar(6px, $color-firm1);
+  flex: 1;
+  overflow: auto;
+  height: 100%;
+}
+
+.app__notifications {
+  z-index: $z-index-notifications;
+  top: 58px;
+}

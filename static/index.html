@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta
+        name="viewport"
+        content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+    />
+    <meta name="description" content="React PWA Boilerplate">
+    <title>React PWA Boilerplate</title>
+    <link rel="shortcut icon" href="/assets/images/favicons/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-32x32.png">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        border: 0;
+        border-radius: 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-text-size-adjust: none;
+        -ms-text-size-adjust: none;
+        text-size-adjust: none;
+      }
+      *:after, *:before {
+        box-sizing: border-box;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      textarea {
+        resize: none;
+      }
+
+      input,
+      textarea {
+        -webkit-appearance: none !important;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        appearance: none !important;
+      }
+      input:focus,
+      textarea:focus {
+        outline: none;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+
+      table {
+        cellspacing: 0 !important;
+        cellpadding: 0 !important;
+        border-spacing: 0 !important;
+      }
+
+      h1, h2, h3, h4, h5, h6, p {
+        font-weight: 400;
+      }
+
+      .fl {
+        float: left;
+      }
+
+      .fr {
+        float: right;
+      }
+
+      .dn {
+        display: none;
+      }
+
+      .rz:after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+      #root {
+        height: 100%;
+      }
+      .shell-loader {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #292929;
+      }
+
+      .shell-loader .i-logo {
+          width: 100%;
+          max-width: 520px;
+          fill: #fff;
+      }
+
+      /* Spinner BEGIN */
+      .shell-loader__spinner-container {
+        position: relative;
+        margin-top: 20px;
+      }
+
+      .shell-loader__spinner {
+        height: 76px;
+        width: 76px;
+        -webkit-animation: spinner-1 4.8s linear infinite;
+        animation: spinner-1 4.8s linear infinite;
+      }
+      @-webkit-keyframes spinner-1 {
+        0%   { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+      }
+      @keyframes spinner-1 {
+        0%   { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      .shell-loader span {
+        display: block;
+        position: absolute;
+        top: 0; left: 0;
+        bottom: 0; right: 0;
+        margin: auto;
+        height: 76px;
+        width: 76px;
+        clip: rect(0, 76px, 76px, 33px);
+        -webkit-animation: spinner-2 1.2s linear infinite;
+        animation: spinner-2 1.2s linear infinite;
+      }
+      @-webkit-keyframes spinner-2 {
+        0%   { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(220deg); }
+      }
+      @keyframes spinner-2 {
+        0%   { transform: rotate(0deg); }
+        100% { transform: rotate(220deg); }
+      }
+      .shell-loader span::after {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        bottom: 0; right: 0;
+        margin: auto;
+        height: 76px;
+        width: 76px;
+        clip: rect(0, 76px, 76px, 33px);
+        border: 3px solid #FFF;
+        border-radius: 50%;
+        -webkit-animation: spinner-3 1.2s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite;
+        animation: spinner-3 1.2s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite;
+      }
+      @-webkit-keyframes spinner-3 {
+        0%   { -webkit-transform: rotate(-140deg); }
+        50%  { -webkit-transform: rotate(-160deg); }
+        100% { -webkit-transform: rotate(140deg); }
+      }
+      @keyframes spinner-3 {
+        0%   { transform: rotate(-140deg); }
+        50%  { transform: rotate(-160deg); }
+        100% { transform: rotate(140deg); }
+      }
+      /* Spinner END */
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+    <% for (var css in htmlWebpackPlugin.files.css) { %>
+    <link rel="stylesheet" property="stylesheet" href="<%= htmlWebpackPlugin.files.css[css] %>">
+    <% } %>
+</head>
+<body>
+    <div id="root">
+      <div class="shell-loader">
+        <img class="i-logo" src="assets/svg/logo.svg">
+        <div class="shell-loader__spinner-container">
+          <div class="shell-loader__spinner"><span></span></div>
+        </div>
+      </div>
+    </div>
+    <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+    <script async="true" src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+    <% } %>
+</body>
+</html>

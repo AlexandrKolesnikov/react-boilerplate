@@ -1,0 +1,44 @@
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+@keyframes fade-in-from-bottom {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(0, 30px);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, 0);
+  }
+}
+@keyframes fade-in-from-top {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(0, -30px);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, 0);
+  }
+}
