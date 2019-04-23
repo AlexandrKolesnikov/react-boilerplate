@@ -4,13 +4,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
 
+const STATIC_DIR = path.resolve(__dirname, '../static');
 const SOURCE_DIR = path.resolve(__dirname, '../src');
 const BUILD_DIR = path.resolve(__dirname, '../dist');
 
 const moduleRules = {
   esLoader: {
     enforce: 'pre',
-    test: /\.js|jsx$/,
+    test: /\.[jt]s|[jt]sx$/,
     loader: 'babel-loader',
     exclude: /node_modules/,
   },
@@ -93,9 +94,12 @@ const moduleRules = {
 
 const basicConfig = {
   entry: [
-    './app.js',
+    './app.tsx',
     './styles/app.scss',
   ],
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+  },
   output: {
     filename: 'bundle.js',
     path: BUILD_DIR,
@@ -112,6 +116,7 @@ const basicConfig = {
   },
   plugins: [
     new CopyWebpackPlugin([
+      { from: STATIC_DIR, to: '' },
       { from: `${SOURCE_DIR}/assets`, to: 'assets' },
     ]),
     new MiniCssExtractPlugin({
