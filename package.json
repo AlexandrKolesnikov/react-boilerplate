@@ -4,8 +4,8 @@
   "description": "React PWA Boilerplate",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config webpack/webpack.config.js",
-    "build": "cross-env npm run clean && webpack --config webpack/webpack.production.config.js --progress --profile --colors --debug",
+    "dev": "webpack-dev-server --env.ENVIRONMENT_FILE_NAME=.env.development --config webpack/webpack.config.js",
+    "build": "cross-env npm run clean && webpack --env.ENVIRONMENT_FILE_NAME=.env --config webpack/webpack.production.config.js --progress --profile --colors --debug",
     "serve": "cross-env babel-node server/index.js serve",
     "clean": "rimraf dist",
     "lint": "eslint ./src",
@@ -72,6 +72,7 @@
     "cross-env": "5.2.0",
     "css-hot-loader": "^1.4.4",
     "css-loader": "2.1.1",
+    "dotenv": "^8.0.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.17.1",

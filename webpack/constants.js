@@ -1,8 +1,14 @@
 const path = require('path');
+const webpack = require('webpack');
+const dotenv = require('dotenv');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
+
+const CLI_ENVIRONMENT_VARIABLES = {
+  ENVIRONMENT_FILE_NAME: 'ENVIRONMENT_FILE_NAME',
+};
 
 const STATIC_DIR = path.resolve(__dirname, '../static');
 const SOURCE_DIR = path.resolve(__dirname, '../src');
@@ -92,46 +98,56 @@ const moduleRules = {
   },
 };
 
-const basicConfig = {
-  entry: [
-    './app.tsx',
-    './styles/app.scss',
-  ],
-  resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
-  },
-  output: {
-    filename: 'bundle.js',
-    path: BUILD_DIR,
-    publicPath: '/',
-  },
-  context: SOURCE_DIR,
-  module: {
-    rules: [
-      moduleRules.esLoader,
-      moduleRules.svgLoader,
-      moduleRules.fontsLoader,
-      moduleRules.imagesLoader,
+const generateConfig = (env) => {
+  const environmentFileName = env[CLI_ENVIRONMENT_VARIABLES.ENVIRONMENT_FILE_NAME];
+  const environmentFilePath = path.resolve(__dirname, `../environments/${environmentFileName}`);
+  const parsedEnvironmentVariables = dotenv.config({ path: environmentFilePath }).parsed;
+
+  return {
+    entry: [
+      './app.js',
+      './styles/app.scss',
     ],
-  },
-  plugins: [
-    new CopyWebpackPlugin([
-      { from: STATIC_DIR, to: '' },
-      { from: `${SOURCE_DIR}/assets`, to: 'assets' },
-    ]),
-    new MiniCssExtractPlugin({
-      filename: './styles/style.css',
-      chunkFilename: '[id].css',
-    }),
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../static/index.html'),
-      filename: 'index.html',
-      inject: false,
-    }),
-  ],
+    resolve: {
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    },
+    output: {
+      filename: 'bundle.js',
+      path: BUILD_DIR,
+      publicPath: '/',
+    },
+    context: SOURCE_DIR,
+    module: {
+      rules: [
+        moduleRules.esLoader,
+        moduleRules.svgLoader,
+        moduleRules.fontsLoader,
+        moduleRules.imagesLoader,
+      ],
+    },
+    plugins: [
+      new webpack.EnvironmentPlugin({
+        ...process.env,
+        ...parsedEnvironmentVariables,
+      }),
+      new CopyWebpackPlugin([
+        { from: STATIC_DIR, to: '' },
+        { from: `${SOURCE_DIR}/assets`, to: 'assets' },
+      ]),
+      new MiniCssExtractPlugin({
+        filename: './styles/style.css',
+        chunkFilename: '[id].css',
+      }),
+      new HtmlWebpackPlugin({
+        template: path.resolve(__dirname, '../static/index.html'),
+        filename: 'index.html',
+        inject: false,
+      }),
+    ],
+  };
 };
 
 module.exports = {
-  basicConfig,
+  generateConfig,
   moduleRules,
 };
