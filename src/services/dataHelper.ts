@@ -6,7 +6,7 @@ import objectDiff from 'object-diff';
 import { TIMESPAN_MAP_KEYS, TIMESPAN_MAP_KEYS_ORDER } from '../constants';
 
 type TimeSpanShapeType = {
-	[key: string]: string | number,
+  [key: string]: string | number,
 }
 
 export const encodeStringToBase64 = (string: string): string => (

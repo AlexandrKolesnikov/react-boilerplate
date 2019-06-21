@@ -2,7 +2,7 @@ import React from 'react';
 import './index.scss';
 
 type Props = {
-	children: React.ReactNode,
+  children: React.ReactNode,
 }
 
 const defaultProps: Props = {

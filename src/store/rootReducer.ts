@@ -10,12 +10,12 @@ const combinedReducers = combineReducers({
 });
 
 const rootReducer: Reducer<IAppState> = (state, action) => {
-	if (action.type === AppActionTypes.APP_RESET_STATE) {
-		// eslint-disable-next-line no-param-reassign
-		state = undefined;
-	}
+  if (action.type === AppActionTypes.APP_RESET_STATE) {
+    // eslint-disable-next-line no-param-reassign
+    state = undefined;
+  }
 
-	return combinedReducers(state, action);
+  return combinedReducers(state, action);
 };
 
 export default rootReducer;

@@ -3,11 +3,11 @@ import classnames from 'classnames';
 import './styles/index.scss';
 
 type Props = {
-	className: string,
+  className: string,
 }
 
 const defaultProps: Props = {
-	className: '',
+  className: '',
 };
 
 const CircularLoader = ({ className }: Props) => (

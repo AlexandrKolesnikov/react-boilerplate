@@ -1,17 +1,17 @@
 import { Component } from 'react';
 
 type WithPermissionsProps = {
-	isAlternativeShown: boolean,
-	alternativeContent: React.ReactNode
-	children: React.ReactNode
+  isAlternativeShown: boolean,
+  alternativeContent: React.ReactNode
+  children: React.ReactNode
 }
 
 const permissions = (predicate: () => boolean) => {
   class WithPermissions extends Component<WithPermissionsProps> {
     static defaultProps: WithPermissionsProps = {
-			isAlternativeShown: false,
-			alternativeContent: null,
-			children: null,
+      isAlternativeShown: false,
+      alternativeContent: null,
+      children: null,
     };
 
     static get isPermitted() {

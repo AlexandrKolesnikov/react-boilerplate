@@ -33,9 +33,9 @@ export function configureStore(initialState?: IAppState) {
   // );
   const store = createStore(
     combinedReducers,
-		initialState,
-		composeWithDevTools(
-			createStoreWithMiddleware,
+    initialState,
+    composeWithDevTools(
+      createStoreWithMiddleware,
     ),
   );
 
@@ -47,7 +47,7 @@ export function configureStore(initialState?: IAppState) {
 const store = configureStore();
 
 if (process.env.NODE_ENV !== 'production') {
-	(window as any).store = store;
+  (window as any).store = store;
 }
 
 export default store;
