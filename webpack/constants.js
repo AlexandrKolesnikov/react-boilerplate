@@ -105,7 +105,7 @@ const generateConfig = (env) => {
 
   return {
     entry: [
-      './app.js',
+      './app.tsx',
       './styles/app.scss',
     ],
     resolve: {
