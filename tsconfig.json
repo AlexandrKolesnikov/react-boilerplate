@@ -20,8 +20,5 @@
   "include": [
     "src"
   ],
-  "exclude": [
-    "./src/services/colorManipulator.ts",
-    "./src/services/dataHelper.ts"
-  ]
+  "exclude": []
 }
