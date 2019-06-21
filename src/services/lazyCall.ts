@@ -1,13 +1,17 @@
 export default class LazyCall {
-  constructor(delay = 200, callback) {
+  timeout?: number;
+  delay: number;
+  callback: (...args: any[]) => void;
+
+  constructor(delay = 200, callback: any) {
     this.delay = delay;
     this.callback = callback;
   }
 
-  call(...args) {
+  call(...args: any[]) {
     this.cancel();
 
-    this.timeout = setTimeout(() => {
+    this.timeout = window.setTimeout(() => {
       if (this.callback) {
         this.callback(...args);
       }

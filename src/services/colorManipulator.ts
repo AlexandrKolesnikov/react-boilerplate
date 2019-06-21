@@ -1,3 +1,5 @@
+// TODO: Complete types for this file
+
 /**
  * Returns a number whose value is limited to the given range.
  *
@@ -6,7 +8,7 @@
  * @param {number} max The upper boundary of the output range
  * @returns {number} A number in the range [min, max]
  */
-function clamp(value, min, max) {
+function clamp(value: number, min: number, max: number) : number {
   if (value < min) {
     return min;
   }
@@ -59,7 +61,7 @@ export function convertColorToString(color) {
  *  @param {string} color - Hex color, i.e. #nnn or #nnnnnn
  *  @returns {string} A CSS rgb color string
  */
-export function convertHexToRGB(color) {
+export function convertHexToRGB(color: string) : string {
   let newColor = color;
 
   if (newColor.length === 4) {
@@ -87,7 +89,7 @@ export function convertHexToRGB(color) {
  * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
  * @returns {{type: string, values: number[]}} A color object
  */
-export function decomposeColor(color) {
+export function decomposeColor(color: string) {
   if (color.charAt(0) === '#') {
     return decomposeColor(convertHexToRGB(color));
   }
@@ -279,3 +281,5 @@ export function invertColor(hex, bw) {
 
   return `#${padZero(r)}${padZero(g)}${padZero(b)}`;
 }
+
+// @ts-ignore-end

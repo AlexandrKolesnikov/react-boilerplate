@@ -1,7 +1,9 @@
 import { all, call } from 'redux-saga/effects';
+import { IAPIResponse } from "./api";
 
-const parseErrorMessages = responseData => (
-  Object.keys(responseData || {}).reduce((accumulator, key) => {
+
+const parseErrorMessages = (responseData: { [key: string]: any }) => (
+  Object.keys(responseData || {}).reduce((accumulator: string[], key) => {
     const item = responseData[key];
     let result = '';
 
@@ -19,11 +21,11 @@ const parseErrorMessages = responseData => (
   }, [])
 );
 
-export function* handleError(error, defaultMessage) {
+export function* handleError(error: IAPIResponse, defaultMessage: string) {
   console.error(error); // eslint-disable-line
-  const { data } = error || {};
+  const { data } = error || <IAPIResponse>{};
   const parsedErrorMessages = parseErrorMessages(data);
-  const notifications = parsedErrorMessages.length ? parsedErrorMessages : [defaultMessage];
+  const notifications: string[] = parsedErrorMessages.length ? parsedErrorMessages : [defaultMessage];
 
   yield all(notifications.map(notification => (
     call(console.error, notification)

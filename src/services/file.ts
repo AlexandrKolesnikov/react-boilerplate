@@ -1,4 +1,4 @@
-export function saveStringAsFile(csvString, filename = 'export.csv') {
+export function saveStringAsFile(csvString: string, filename = 'export.csv'): void {
   const blob = new Blob([csvString]);
 
   if (window.navigator.msSaveOrOpenBlob) { // IE hack; see http://msdn.microsoft.com/en-us/library/ie/hh779016.aspx

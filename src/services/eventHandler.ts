@@ -1,30 +1,30 @@
-export const isActionKeys = e => (
+export const isActionKeys = (e: KeyboardEvent) => (
   [46, 8, 9, 27, 13].indexOf(e.keyCode) !== -1
 );
 
-export const isCtrlOrMeta = e => e.ctrlKey === true || e.metaKey === true;
+export const isCtrlOrMeta = (e: KeyboardEvent) => e.ctrlKey === true || e.metaKey === true;
 
-export const isCtrlOrCmdPlusA = e => e.keyCode === 65 && isCtrlOrMeta(e);
+export const isCtrlOrCmdPlusA = (e: KeyboardEvent) => e.keyCode === 65 && isCtrlOrMeta(e);
 
-export const isCtrlOrCmdPlusC = e => e.keyCode === 67 && isCtrlOrMeta(e);
+export const isCtrlOrCmdPlusC = (e: KeyboardEvent) => e.keyCode === 67 && isCtrlOrMeta(e);
 
-export const isCtrlOrCmdPlusV = e => e.keyCode === 86 && isCtrlOrMeta(e);
+export const isCtrlOrCmdPlusV = (e: KeyboardEvent) => e.keyCode === 86 && isCtrlOrMeta(e);
 
-export const isCtrlOrCmdPlusX = e => e.keyCode === 88 && isCtrlOrMeta(e);
+export const isCtrlOrCmdPlusX = (e: KeyboardEvent) => e.keyCode === 88 && isCtrlOrMeta(e);
 
-export const isNavigationKeys = e => e.keyCode >= 35 && e.keyCode <= 39;
+export const isNavigationKeys = (e: KeyboardEvent) => e.keyCode >= 35 && e.keyCode <= 39;
 
-export const isDot = e => e.key === '.';
-export const isComa = e => e.key === ',';
+export const isDot = (e: KeyboardEvent) => e.key === '.';
+export const isComa = (e: KeyboardEvent) => e.key === ',';
 
-export const isNonDigitKeys = (e) => {
+export const isNonDigitKeys = (e: KeyboardEvent) => {
   const { shiftKey, keyCode } = e;
 
   return (shiftKey || (keyCode < 48 || keyCode > 57)) && (keyCode < 96 || keyCode > 105);
 };
 
 export const preventNonDigitKeyEvents = (
-  e,
+  e: KeyboardEvent,
   allowControlKeys = true,
   allowDot = true,
   allowComa = true,

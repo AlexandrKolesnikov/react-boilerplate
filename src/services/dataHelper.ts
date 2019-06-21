@@ -1,17 +1,23 @@
+// TODO: Complete types for this file
+
 import _findIndex from 'lodash/findIndex';
-import moment from 'moment';
+import moment, {Moment} from 'moment';
 import objectDiff from 'object-diff';
 import { TIMESPAN_MAP_KEYS, TIMESPAN_MAP_KEYS_ORDER } from '../constants';
 
-export const encodeStringToBase64 = str => (
-  btoa(encodeURIComponent(str)
+type TimeSpanShapeType = {
+	[key: string]: string | number,
+}
+
+export const encodeStringToBase64 = (string: string): string => (
+  btoa(encodeURIComponent(string)
     .replace(
       /%([0-9A-F]{2})/g,
-      (match, p1) => String.fromCharCode(`0x${p1}`),
+      (match, p1) => String.fromCharCode(Number.parseInt(`0x${p1}`)),
     ))
 );
 
-export const getItemById = (id, items, key = 'id') => {
+export const getItemById = (id: string | number, items: Array<any>, key = 'id') => {
   const itemIndex = _findIndex(items, item => id === item[key]);
 
   return {
@@ -20,7 +26,7 @@ export const getItemById = (id, items, key = 'id') => {
   };
 };
 
-export const convertTimeSpanShapeToString = data => (
+export const convertTimeSpanShapeToString = (data: TimeSpanShapeType): string => (
   TIMESPAN_MAP_KEYS_ORDER.reduce((accumulator, key) => {
     const stringKey = TIMESPAN_MAP_KEYS[key];
     const value = (data || {})[key];
@@ -39,7 +45,7 @@ export const convertTimeSpanShapeToString = data => (
   }, '')
 );
 
-export const generateTimeSpanShape = (fromDate, toDate) => {
+export const generateTimeSpanShape = (fromDate: string | number | Moment, toDate: string | number | Moment): TimeSpanShapeType => {
   const dateStart = moment(fromDate);
   const dateEnd = moment(toDate);
 
@@ -62,7 +68,7 @@ export const generateTimeSpanShape = (fromDate, toDate) => {
   };
 };
 
-export const addMomentTimezoneOffset = (date, clone = true, inverseOffset = false) => {
+export const addMomentTimezoneOffset = (date: Moment, clone = true, inverseOffset = false): Moment => {
   const result = clone ? date.clone() : date;
   const currentDate = moment();
   const timezoneOffset = currentDate.utcOffset() * (inverseOffset ? -1 : 1);
@@ -72,4 +78,4 @@ export const addMomentTimezoneOffset = (date, clone = true, inverseOffset = fals
   return result;
 };
 
-export const getChangedData = (initialValues, data) => objectDiff(initialValues || {}, data || {});
+export const getChangedData = <T = object>(initialValues: T, data: T) => objectDiff(initialValues || {}, data || {});

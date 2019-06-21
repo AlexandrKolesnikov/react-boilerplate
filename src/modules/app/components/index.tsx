@@ -1,8 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './index.scss';
 
-const App = ({ children }) => (
+type Props = {
+	children: React.ReactNode,
+}
+
+const defaultProps: Props = {
+  children: null,
+};
+
+const App = ({ children }: Props) => (
   <div className="app">
     <div className="app__main-container">
       <main className="app__content">
@@ -12,12 +19,6 @@ const App = ({ children }) => (
   </div>
 );
 
-App.propTypes = {
-  children: PropTypes.node,
-};
-
-App.defaultProps = {
-  children: null,
-};
+App.defaultProps = defaultProps;
 
 export default App;

@@ -5,7 +5,7 @@ const PASSWORD_ERROR_MESSAGE = `Password should pass next requirements: Minimum 
 `;
 
 // Validators helpers BEGIN
-export const validateIsNotEmpty = (value, errors, key, name) => {
+export const validateIsNotEmpty = (value: string | number, errors: IErrors, key: string, name: string): IErrors => {
   const preparedValue = value !== 0 && !value ? '' : value;
 
   if (!String(preparedValue).trim()) {
@@ -18,7 +18,7 @@ export const validateIsNotEmpty = (value, errors, key, name) => {
   return errors;
 };
 
-export const validateShouldBeNotEqualTo = (value, errors, key, name, checkString) => {
+export const validateShouldBeNotEqualTo = (value: string, errors: IErrors, key: string, name: string, checkString: string): IErrors => {
   if (value === checkString) {
     return {
       ...errors,
@@ -29,7 +29,7 @@ export const validateShouldBeNotEqualTo = (value, errors, key, name, checkString
   return errors;
 };
 
-export const validateShouldNotStartFrom = (value, errors, key, name, checkString) => {
+export const validateShouldNotStartFrom = (value: string, errors: IErrors, key: string, name: string, checkString: string): IErrors => {
   if (String((value || '')).charAt(0) === checkString) {
     return {
       ...errors,
@@ -40,7 +40,7 @@ export const validateShouldNotStartFrom = (value, errors, key, name, checkString
   return errors;
 };
 
-export const validateIsRequired = (value, errors, key, name) => {
+export const validateIsRequired = (value: any, errors: IErrors, key: string, name: string): IErrors => {
   if (!value) {
     return {
       ...errors,
@@ -51,7 +51,7 @@ export const validateIsRequired = (value, errors, key, name) => {
   return errors;
 };
 
-export const validateMinLength = (value, errors, minLength, key, name) => {
+export const validateMinLength = (value: string, errors: IErrors, minLength: number, key: string, name: string): IErrors => {
   if (String(value || '').length < minLength) {
     return {
       ...errors,
@@ -62,7 +62,7 @@ export const validateMinLength = (value, errors, minLength, key, name) => {
   return errors;
 };
 
-export const validateEmail = (value, errors, key) => {
+export const validateEmail = (value: string, errors: IErrors, key: string): IErrors => {
   if (!EMAIL_REGEXP.test(String(value || ''))) {
     return {
       ...errors,
@@ -73,7 +73,7 @@ export const validateEmail = (value, errors, key) => {
   return errors;
 };
 
-export const validatePassword = (value, errors, key) => {
+export const validatePassword = (value: string, errors: IErrors, key: string): IErrors => {
   if (!PASSWORD_REGEXP.test(String(value || ''))) {
     return {
       ...errors,
@@ -87,3 +87,7 @@ export const validatePassword = (value, errors, key) => {
 
 // Forms validators BEGIN
 // Forms validators END
+
+interface IErrors {
+  [key: string]: string,
+}

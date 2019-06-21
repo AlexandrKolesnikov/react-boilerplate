@@ -1,9 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import './styles/index.scss';
 
-const CircularLoader = ({ className }) => (
+type Props = {
+	className: string,
+}
+
+const defaultProps: Props = {
+	className: '',
+};
+
+const CircularLoader = ({ className }: Props) => (
   <div className={classnames('circular-loader', className)}>
     <div className="circular-loader__container">
       <div className="circular-loader__circle" />
@@ -11,12 +18,6 @@ const CircularLoader = ({ className }) => (
   </div>
 );
 
-CircularLoader.propTypes = {
-  className: PropTypes.string,
-};
-
-CircularLoader.defaultProps = {
-  className: '',
-};
+CircularLoader.defaultProps = defaultProps;
 
 export default CircularLoader;

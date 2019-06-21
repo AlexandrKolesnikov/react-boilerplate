@@ -15,7 +15,7 @@ export const LOCAL_STORAGE_KEYS = {
   roles: 'roles',
 };
 
-export const TIMESPAN_MAP_KEYS = {
+export const TIMESPAN_MAP_KEYS: { [key: string]: string } = {
   years: 'y',
   months: 'm',
   days: 'd',

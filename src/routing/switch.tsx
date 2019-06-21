@@ -1,15 +1,17 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch as ReactRouterSwitch, Route, Redirect } from 'react-router-dom';
 import { DEFAULT_ROUTE, ROUTES } from './constants';
-import Home from '../modules/home/components';
+import Home from '../modules/home/components/index';
 
-export default () => (
-  <Switch>
+const Switch = () => (
+  <ReactRouterSwitch>
     <Route
       path={ROUTES.home.path}
       exact={ROUTES.home.exact}
       component={Home}
     />
     <Redirect to={DEFAULT_ROUTE.path} />
-  </Switch>
+  </ReactRouterSwitch>
 );
+
+export default Switch;

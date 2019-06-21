@@ -1,8 +1,19 @@
 import { Component } from 'react';
-import PropTypes from 'prop-types';
 
-const permissions = (predicate) => {
-  class WithPermissions extends Component {
+type WithPermissionsProps = {
+	isAlternativeShown: boolean,
+	alternativeContent: React.ReactNode
+	children: React.ReactNode
+}
+
+const permissions = (predicate: () => boolean) => {
+  class WithPermissions extends Component<WithPermissionsProps> {
+    static defaultProps: WithPermissionsProps = {
+			isAlternativeShown: false,
+			alternativeContent: null,
+			children: null,
+    };
+
     static get isPermitted() {
       return typeof predicate === 'function' && predicate();
     }
@@ -18,25 +29,13 @@ const permissions = (predicate) => {
 
       if (isAlternativeShown) {
         return (
-          alternativeContent || 'You have no correct permisssions'
+          alternativeContent || 'You have no correct permissions'
         );
       }
 
       return null;
     }
   }
-
-  WithPermissions.propTypes = {
-    isAlternativeShown: PropTypes.bool,
-    alternativeContent: PropTypes.node,
-    children: PropTypes.node,
-  };
-
-  WithPermissions.defaultProps = {
-    isAlternativeShown: false,
-    alternativeContent: null,
-    children: null,
-  };
 
   return WithPermissions;
 };

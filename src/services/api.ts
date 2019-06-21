@@ -1,7 +1,14 @@
+// TODO: Improve types of this file
+
 import queryString from 'query-string';
 import { API_URL, LOCAL_STORAGE_KEYS } from '../constants';
 
-export const getUrl = (path, queryParams) => {
+export interface IAPIResponse {
+  response: any,
+  data?: any,
+}
+
+export const getUrl = (path: string, queryParams: { [key: string]: string }): string => {
   const search = queryString.stringify(queryParams);
 
   return (
@@ -9,16 +16,17 @@ export const getUrl = (path, queryParams) => {
   );
 };
 
-export const preProcessResponse = (response) => {
+export const preProcessResponse = (response: any) => {
   const { status } = response;
 
   return new Promise((resolve, reject) => {
-    const result = {
+    const result: IAPIResponse = {
       response,
+      data: null,
     };
 
-    response.text().then((text) => {
-      result.data = JSON.parse(text || null);
+    response.text().then((text: string) => {
+      result.data = JSON.parse(text || 'null');
 
       if (status >= 200 && status < 300) {
         resolve(result);
@@ -29,7 +37,7 @@ export const preProcessResponse = (response) => {
   });
 };
 
-export const requestAPI = (url, method = 'GET', body, requestHeaders = {}) => {
+export const requestAPI = (url: string, method = 'GET', body: any, requestHeaders = {}) => {
   const makeRequest = () => {
     const headers = {
       'content-type': 'application/json',
