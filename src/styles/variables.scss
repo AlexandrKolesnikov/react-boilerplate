@@ -1,7 +1,7 @@
 // Colors BEGIN
 $color-firm1: #292929;
 $color-firm2: #db3340;
-$color-firm3: white;
+$color-firm3: #ffffff;
 $color-firm4: #f1f1f1;
 $color-firm5: #272727;
 $color-firm6: #686868;
@@ -22,7 +22,7 @@ $active-opacity: 0.6;
 
 // Z-Index BEGIN
 $z-index-general-loader: 1;
-$z-index-notifications: 3001;
+$z-index-notifications: 2;
 // Z-Index END
 
 // Links BEGIN
@@ -30,12 +30,3 @@ $link-default-color: $color-firm2;
 $link-default-hover-color: rgba($color-firm2, 0.7);
 $link-default-active-color: rgba($color-firm1, 0.6);
 // Links END
-
-// Resize BEGIN
-$device-xs-width: 0;
-$device-sm-width: 600;
-$device-sm-md-width: 736;
-$device-md-width: 960;
-$device-lg-width: 1280;
-$device-xl-width: 1920;
-// Resize END

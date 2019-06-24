@@ -4,5 +4,4 @@ export const LOCAL_STORAGE_KEYS = {
   accessToken: 'accessToken',
   accessTokenExpirationDate: 'accessTokenExpirationDate',
   refreshToken: 'refreshToken',
-  roles: 'roles',
 };

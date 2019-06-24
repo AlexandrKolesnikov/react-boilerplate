@@ -8,6 +8,7 @@
     visibility: hidden;
   }
 }
+
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -18,6 +19,7 @@
     visibility: visible;
   }
 }
+
 @keyframes fade-in-from-bottom {
   0% {
     opacity: 0;
@@ -30,6 +32,7 @@
     transform: translate(0, 0);
   }
 }
+
 @keyframes fade-in-from-top {
   0% {
     opacity: 0;

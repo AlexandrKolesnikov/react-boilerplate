@@ -42,11 +42,11 @@ export const preventNonDigitKeyEvents = (
   if (allowControlKeys) {
     if (
       isActionKeys(e)
-            || isCtrlOrCmdPlusA(e)
-            || isCtrlOrCmdPlusC(e)
-            || isCtrlOrCmdPlusV(e)
-            || isCtrlOrCmdPlusX(e)
-            || isNavigationKeys(e)
+      || isCtrlOrCmdPlusA(e)
+      || isCtrlOrCmdPlusC(e)
+      || isCtrlOrCmdPlusV(e)
+      || isCtrlOrCmdPlusX(e)
+      || isNavigationKeys(e)
     ) {
       allowedKey = true;
     }
