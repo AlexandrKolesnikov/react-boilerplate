@@ -24,7 +24,5 @@ const render = (RouterSwitch: () => JSX.Element) => {
 render(Switch);
 
 if (module.hot) {
-  module.hot.accept('./routing/switch', () => {
-    render(require('./routing/switch').default);
-  });
+  module.hot.accept('./routing/switch');
 }
