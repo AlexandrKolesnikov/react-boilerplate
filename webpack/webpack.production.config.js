@@ -3,7 +3,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { generateConfig: generateBasicConfig, moduleRules } = require('./constants');
 
-const generateConfig = (env) => {
+const generateConfig = env => {
   const basicConfig = generateBasicConfig(env);
 
   return {

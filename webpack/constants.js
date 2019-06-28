@@ -98,7 +98,7 @@ const moduleRules = {
   },
 };
 
-const generateConfig = (env) => {
+const generateConfig = env => {
   const environmentFileName = env[CLI_ENVIRONMENT_VARIABLES.ENVIRONMENT_FILE_NAME];
   const environmentFilePath = path.resolve(__dirname, `../environments/${environmentFileName}`);
   const parsedEnvironmentVariables = dotenv.config({ path: environmentFilePath }).parsed;

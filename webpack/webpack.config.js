@@ -6,7 +6,7 @@ const BUILD_DIR = 'dist';
 const DEV_SERVER_HOST = '127.0.0.1';
 const DEV_SERVER_PORT = '3000';
 
-const generateConfig = (env) => {
+const generateConfig = env => {
   const basicConfig = generateBasicConfig(env);
 
   return {
