@@ -1,66 +1,56 @@
-@keyframes loader-1 {
-  0% {
-    transform: rotate(0deg);
-  }
+@import "./variables.scss";
+
+@keyframes rotate {
   100% {
     transform: rotate(360deg);
   }
 }
 
-@keyframes loader-2 {
+@keyframes dash {
   0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(220deg);
-  }
-}
-
-@keyframes loader-3 {
-  0% {
-    transform: rotate(-140deg);
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
   }
   50% {
-    transform: rotate(-160deg);
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
   }
   100% {
-    transform: rotate(140deg);
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;
   }
 }
 
-%arc {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  margin: auto;
-  height: 100%;
-  width: 100%;
-  border-radius: 50%;
-  clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+@keyframes color {
+  100%,
+  0% {
+    stroke: $circular-loader-color3;
+  }
+  40% {
+    stroke: $circular-loader-color2;
+  }
+  66% {
+    stroke: $circular-loader-color1;
+  }
+  80%,
+  90% {
+    stroke: $circular-loader-color4;
+  }
 }
 
 .circular-loader {
-  height: 48px;
-  width: 48px;
-  color: $color-firm1;
-}
-
-.circular-loader__container {
-  width: 100%;
-  height: 100%;
-  animation: loader-1 4.8s linear infinite;
+  width: $circular-loader-width;
 }
 
 .circular-loader__circle {
-  @extend %arc;
-  animation: loader-2 1.2s linear infinite;
-  &:after {
-    @extend %arc;
-    content: "";
-    border: 3px solid;
-    animation: loader-3 1.2s cubic-bezier(0.77, 0, 0.175, 1) infinite;
-  }
+  width: 100%;
+  height: 100%;
+  animation: rotate 2s linear infinite;
+}
+
+.circular-loader__circle-path {
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+  stroke-linecap: round;
 }

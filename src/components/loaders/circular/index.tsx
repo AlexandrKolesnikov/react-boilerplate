@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import './styles/index.scss';
 
 type Props = {
-  className: string,
+  className?: string,
 }
 
 const defaultProps: Props = {
@@ -12,9 +12,17 @@ const defaultProps: Props = {
 
 const CircularLoader = ({ className }: Props) => (
   <div className={classnames('circular-loader', className)}>
-    <div className="circular-loader__container">
-      <div className="circular-loader__circle" />
-    </div>
+    <svg className="circular-loader__circle" viewBox="25 25 50 50">
+      <circle
+        className="circular-loader__circle-path"
+        cx="50"
+        cy="50"
+        r="20"
+        fill="none"
+        strokeWidth="2"
+        strokeMiterlimit="10"
+      />
+    </svg>
   </div>
 );
 
