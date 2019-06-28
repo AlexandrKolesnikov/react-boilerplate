@@ -148,6 +148,7 @@ const generateConfig = (env) => {
 };
 
 module.exports = {
+  CLI_ENVIRONMENT_VARIABLES,
   generateConfig,
   moduleRules,
 };
