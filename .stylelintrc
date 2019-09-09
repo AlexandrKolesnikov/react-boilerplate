@@ -146,7 +146,7 @@
     "selector-max-empty-lines": 0,
     "selector-max-id": 0,
     "selector-max-pseudo-class": 2,
-    "selector-max-specificity": "0, 4, 0",
+    "selector-max-specificity": "0,4,0",
     "selector-max-universal": 0,
     "selector-nested-pattern": "^&.",
     "selector-no-qualifying-type": true,

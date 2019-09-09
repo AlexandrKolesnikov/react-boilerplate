@@ -3,6 +3,7 @@
     opacity: 1;
     visibility: visible;
   }
+
   100% {
     opacity: 0;
     visibility: hidden;
@@ -14,6 +15,7 @@
     opacity: 0;
     visibility: hidden;
   }
+
   100% {
     opacity: 1;
     visibility: visible;
@@ -26,6 +28,7 @@
     visibility: hidden;
     transform: translate(0, 30px);
   }
+
   100% {
     opacity: 1;
     visibility: visible;
@@ -39,6 +42,7 @@
     visibility: hidden;
     transform: translate(0, -30px);
   }
+
   100% {
     opacity: 1;
     visibility: visible;

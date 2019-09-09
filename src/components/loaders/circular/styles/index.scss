@@ -1,4 +1,4 @@
-@import "./variables.scss";
+@import './variables.scss';
 
 @keyframes rotate {
   100% {
@@ -11,10 +11,12 @@
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
   }
+
   50% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -35px;
   }
+
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -124px;
@@ -26,12 +28,15 @@
   0% {
     stroke: $circular-loader-color3;
   }
+
   40% {
     stroke: $circular-loader-color2;
   }
+
   66% {
     stroke: $circular-loader-color1;
   }
+
   80%,
   90% {
     stroke: $circular-loader-color4;
