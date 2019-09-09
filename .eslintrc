@@ -3,6 +3,7 @@
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "rules": {
+    "generator-star-spacing": [1, {"before": false, "after": true}],
     "import/prefer-default-export": 0,
     "no-underscore-dangle": [
       "error",
@@ -12,7 +13,31 @@
         ]
       }
     ],
-    "jsx-a11y/click-events-have-key-events": 0
+    "padding-line-between-statements": [
+      1,
+      { "blankLine": "always", "prev": "*", "next": "return" },
+      { "blankLine": "always", "prev": ["const", "let", "var", "import"], "next": "*"},
+      { "blankLine": "any", "prev": ["const", "let", "var"], "next": ["const", "let", "var"]},
+      { "blankLine": "any", "prev": ["import"], "next": ["import"]}
+    ],
+    "padded-blocks": [
+      1,
+      {"blocks": "never", "classes": "never"}
+    ],
+    "react/jsx-max-props-per-line": [
+      1,
+      {"maximum": 1, "when": "multiline"}
+    ],
+    "space-in-parens": [1, "never"],
+    "jsx-a11y/click-events-have-key-events": 0,
+    "react/button-has-type": 0,
+    "jsx-a11y/label-has-for": 0,
+    "jsx-a11y/label-has-associated-control": [
+      1,
+      {
+        "assert": "nesting"
+      }
+    ]
   },
   "env": {
     "browser": true
