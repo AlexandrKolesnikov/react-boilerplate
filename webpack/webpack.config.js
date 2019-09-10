@@ -2,6 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const { generateConfig: generateBasicConfig, moduleRules } = require('./constants');
 
+// TODO: Migrate to the TS
+
 const BUILD_DIR = 'dist';
 const DEV_SERVER_HOST = '127.0.0.1';
 const DEV_SERVER_PORT = '3000';

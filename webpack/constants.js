@@ -6,6 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
 
+// TODO: Migrate to the TS
+
 const CLI_ENVIRONMENT_VARIABLES = {
   ENVIRONMENT_FILE_NAME: 'ENVIRONMENT_FILE_NAME',
 };
