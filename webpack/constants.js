@@ -71,9 +71,7 @@ const moduleRules = {
         loader: 'postcss-loader',
         options: {
           plugins: [
-            autoprefixer({
-              browsers: ['last 20 version'],
-            }),
+            autoprefixer(),
           ],
           sourceMap: false,
         },
