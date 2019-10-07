@@ -3,7 +3,7 @@ import './index.scss';
 
 type Props = {
   children: React.ReactNode,
-}
+};
 
 const defaultProps: Props = {
   children: null,

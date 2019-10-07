@@ -4,7 +4,7 @@ import './styles/index.scss';
 
 type Props = {
   className?: string,
-}
+};
 
 const defaultProps: Props = {
   className: '',

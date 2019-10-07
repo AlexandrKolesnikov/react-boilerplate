@@ -4,7 +4,7 @@ type WithPermissionsProps = {
   isAlternativeShown: boolean,
   alternativeContent: React.ReactNode
   children: React.ReactNode
-}
+};
 
 const permissions = (predicate: () => boolean) => {
   class WithPermissions extends Component<WithPermissionsProps> {
