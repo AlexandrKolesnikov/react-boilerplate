@@ -5,6 +5,7 @@
   "rules": {
     "generator-star-spacing": [1, {"before": false, "after": true}],
     "import/prefer-default-export": 0,
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["stories/**/*.*", "**/*.spec.js"]}],
     "no-underscore-dangle": [
       "error",
       {
@@ -37,7 +38,8 @@
       {
         "assert": "nesting"
       }
-    ]
+    ],
+    "react/static-property-placement": ["error", "static public field"]
   },
   "env": {
     "browser": true
