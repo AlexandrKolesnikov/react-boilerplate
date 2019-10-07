@@ -2,7 +2,7 @@ import React from 'react';
 
 const Home = () => (
   <div>
-    {"Hello! I'm home module"}
+    Hello! I&apos;m home module
   </div>
 );
 
