@@ -10,17 +10,25 @@
     "clean": "rimraf dist",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src ./stories",
     "lint-fix": "npm run lint -- --fix",
-    "stylelint": "stylelint src/**/*.scss",
+    "stylelint": "stylelint src/**/*.{scss,css}",
     "stylelint-fix": "npm run stylelint -- --fix",
     "check-types": "tsc",
-    "precommit": "npm run stylelint && npm run check-types && npm run lint",
-    "prepush": "npm run stylelint && npm run check-types && npm run lint",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{scss,css}": [
+      "stylelint --fix",
+      "git add"
+    ]
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run precommit",
+      "pre-commit": "npm run check-types --silent && lint-staged",
       "pre-push": "npm run prepush"
     }
   },
@@ -120,6 +128,7 @@
     "html-webpack-inline-svg-plugin": "^1.2.4",
     "html-webpack-plugin": "^3.2.0",
     "husky": "3.0.8",
+    "lint-staged": "^9.4.2",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
     "postcss-loader": "^3.0.0",
