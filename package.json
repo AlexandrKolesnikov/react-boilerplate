@@ -28,8 +28,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run check-types --silent && lint-staged",
-      "pre-push": "npm run prepush"
+      "pre-commit": "npm run check-types --silent && lint-staged"
     }
   },
   "author": "Alexandr Kolesnikov",
