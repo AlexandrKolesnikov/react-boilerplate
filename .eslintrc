@@ -1,11 +1,30 @@
 {
-  "extends": ["airbnb-typescript"],
+  "extends": [
+    "airbnb-typescript"
+  ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "rules": {
-    "generator-star-spacing": [1, {"before": false, "after": true}],
+    "generator-star-spacing": [
+      1,
+      {
+        "before": false,
+        "after": true
+      }
+    ],
     "import/prefer-default-export": 0,
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["stories/**/*.*", "**/*.spec.js"]}],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "stories/**/*.*",
+          "webpack/**/*.*",
+          "**/*.spec.js"
+        ]
+      }
+    ],
     "no-underscore-dangle": [
       "error",
       {
@@ -16,20 +35,62 @@
     ],
     "padding-line-between-statements": [
       1,
-      { "blankLine": "always", "prev": "*", "next": "return" },
-      { "blankLine": "always", "prev": ["const", "let", "var", "import"], "next": "*"},
-      { "blankLine": "any", "prev": ["const", "let", "var"], "next": ["const", "let", "var"]},
-      { "blankLine": "any", "prev": ["import"], "next": ["import"]}
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "return"
+      },
+      {
+        "blankLine": "always",
+        "prev": [
+          "const",
+          "let",
+          "var",
+          "import"
+        ],
+        "next": "*"
+      },
+      {
+        "blankLine": "any",
+        "prev": [
+          "const",
+          "let",
+          "var"
+        ],
+        "next": [
+          "const",
+          "let",
+          "var"
+        ]
+      },
+      {
+        "blankLine": "any",
+        "prev": [
+          "import"
+        ],
+        "next": [
+          "import"
+        ]
+      }
     ],
     "padded-blocks": [
       1,
-      {"blocks": "never", "classes": "never"}
+      {
+        "blocks": "never",
+        "classes": "never"
+      }
     ],
     "react/jsx-max-props-per-line": [
       1,
-      {"maximum": 1, "when": "multiline"}
+      {
+        "maximum": 1,
+        "when": "multiline"
+      }
     ],
-    "space-in-parens": [1, "never"],
+    "space-in-parens": [
+      1,
+      "never"
+    ],
     "jsx-a11y/click-events-have-key-events": 0,
     "react/button-has-type": 0,
     "jsx-a11y/label-has-for": 0,
@@ -39,7 +100,10 @@
         "assert": "nesting"
       }
     ],
-    "react/static-property-placement": ["error", "static public field"]
+    "react/static-property-placement": [
+      "error",
+      "static public field"
+    ]
   },
   "env": {
     "browser": true
