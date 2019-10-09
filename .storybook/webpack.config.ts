@@ -1,0 +1,42 @@
+import webpack from 'webpack';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import generateDevConfig from '../webpack/webpack.config';
+import { IEnvironment } from '../webpack/types';
+import { Plugin } from 'webpack';
+
+const env: IEnvironment = {
+  ENVIRONMENT_FILE_NAME: '.env.development'
+};
+
+const devConfig = generateDevConfig(env);
+
+const pluginsToBeIgnored = [
+  CopyWebpackPlugin,
+  HtmlWebpackPlugin
+];
+
+const isPluginIgnored = (plugin: Plugin) => (
+  pluginsToBeIgnored.some(pluginClass => plugin instanceof pluginClass)
+);
+
+const devConfigPlugins = devConfig.plugins.filter(plugin => !isPluginIgnored(plugin));
+
+export default ({ config }: { config: webpack.Configuration }) => {
+  const { module = {} as webpack.Module, resolve = {} as webpack.Resolve } = config;
+  const { module: devModule = {} as webpack.Module } = devConfig;
+
+  config.plugins = (config.plugins || []).concat(devConfigPlugins);
+
+  config.module = {
+    ...module,
+    rules: (module.rules || []).concat(devModule.rules as webpack.RuleSetRule[] || []),
+  };
+
+  config.resolve = {
+    ...resolve,
+    extensions: (resolve.extensions || []).concat(['.ts', '.tsx'])
+  };
+
+  return config;
+};

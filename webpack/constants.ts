@@ -7,10 +7,6 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import autoprefixer from 'autoprefixer';
 import { IEnvironment } from './types';
 
-export const CLI_ENVIRONMENT_VARIABLES: IEnvironment = {
-  ENVIRONMENT_FILE_NAME: 'ENVIRONMENT_FILE_NAME',
-};
-
 const STATIC_DIR = path.resolve(__dirname, '../static');
 const SOURCE_DIR = path.resolve(__dirname, '../src');
 
