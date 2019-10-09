@@ -19,8 +19,9 @@
       "error",
       {
         "devDependencies": [
-          "stories/**/*.*",
           "webpack/**/*.*",
+          "server/**/*.*",
+          "stories/**/*.*",
           "**/*.spec.js"
         ]
       }

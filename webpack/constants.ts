@@ -13,7 +13,8 @@ export const CLI_ENVIRONMENT_VARIABLES: IEnvironment = {
 
 const STATIC_DIR = path.resolve(__dirname, '../static');
 const SOURCE_DIR = path.resolve(__dirname, '../src');
-const BUILD_DIR = path.resolve(__dirname, '../dist');
+
+export const BUILD_DIR = path.resolve(__dirname, '../dist');
 
 export const moduleRules = {
   esLoader: {
