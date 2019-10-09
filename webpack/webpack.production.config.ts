@@ -1,11 +1,10 @@
-const webpack = require('webpack');
-const TerserPlugin = require('terser-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { generateConfig: generateBasicConfig, moduleRules } = require('./constants');
+import webpack from 'webpack';
+import TerserPlugin from 'terser-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { generateConfig as generateBasicConfig, moduleRules } from './constants';
+import { IEnvironment } from './types';
 
-// TODO: Migrate to the TS
-
-const generateConfig = env => {
+const generateConfig = (env: IEnvironment) => {
   const basicConfig = generateBasicConfig(env);
 
   return {
@@ -33,16 +32,10 @@ const generateConfig = env => {
     },
     plugins: [
       ...basicConfig.plugins,
-      new webpack.optimize.ModuleConcatenationPlugin(),
-      new webpack.optimize.OccurrenceOrderPlugin(),
+      new webpack.optimize.OccurrenceOrderPlugin(true),
       new webpack.LoaderOptionsPlugin({
         minimize: true,
         debug: false,
-      }),
-      new webpack.DefinePlugin({
-        'process.env': {
-          NODE_ENV: JSON.stringify('production'),
-        },
       }),
     ],
     optimization: {
@@ -63,4 +56,4 @@ const generateConfig = env => {
   };
 };
 
-module.exports = env => generateConfig(env);
+export default (env: IEnvironment) => generateConfig(env);

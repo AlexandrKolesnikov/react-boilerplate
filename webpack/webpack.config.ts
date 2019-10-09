@@ -1,14 +1,13 @@
-const path = require('path');
-const webpack = require('webpack');
-const { generateConfig: generateBasicConfig, moduleRules } = require('./constants');
-
-// TODO: Migrate to the TS
+import path from 'path';
+import webpack from 'webpack';
+import { generateConfig as generateBasicConfig, moduleRules } from './constants';
+import { IEnvironment } from './types';
 
 const BUILD_DIR = 'dist';
 const DEV_SERVER_HOST = '127.0.0.1';
 const DEV_SERVER_PORT = '3000';
 
-const generateConfig = env => {
+const generateConfig = (env: IEnvironment) => {
   const basicConfig = generateBasicConfig(env);
 
   return {
@@ -61,4 +60,4 @@ const generateConfig = env => {
   };
 };
 
-module.exports = env => generateConfig(env);
+export default (env: IEnvironment) => generateConfig(env);

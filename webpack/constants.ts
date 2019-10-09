@@ -1,14 +1,13 @@
-const path = require('path');
-const webpack = require('webpack');
-const dotenv = require('dotenv');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const autoprefixer = require('autoprefixer');
+import path from 'path';
+import webpack from 'webpack';
+import dotenv from 'dotenv';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import autoprefixer from 'autoprefixer';
+import { IEnvironment } from './types';
 
-// TODO: Migrate to the TS
-
-const CLI_ENVIRONMENT_VARIABLES = {
+export const CLI_ENVIRONMENT_VARIABLES: IEnvironment = {
   ENVIRONMENT_FILE_NAME: 'ENVIRONMENT_FILE_NAME',
 };
 
@@ -16,7 +15,7 @@ const STATIC_DIR = path.resolve(__dirname, '../static');
 const SOURCE_DIR = path.resolve(__dirname, '../src');
 const BUILD_DIR = path.resolve(__dirname, '../dist');
 
-const moduleRules = {
+export const moduleRules = {
   esLoader: {
     enforce: 'pre',
     test: /\.[jt]s|[jt]sx$/,
@@ -98,8 +97,8 @@ const moduleRules = {
   },
 };
 
-const generateConfig = env => {
-  const environmentFileName = env[CLI_ENVIRONMENT_VARIABLES.ENVIRONMENT_FILE_NAME];
+export const generateConfig = (env: IEnvironment) => {
+  const environmentFileName = env.ENVIRONMENT_FILE_NAME;
   const environmentFilePath = path.resolve(__dirname, `../environments/${environmentFileName}`);
   const parsedEnvironmentVariables = dotenv.config({ path: environmentFilePath }).parsed;
 
@@ -145,10 +144,4 @@ const generateConfig = env => {
       }),
     ],
   };
-};
-
-module.exports = {
-  CLI_ENVIRONMENT_VARIABLES,
-  generateConfig,
-  moduleRules,
 };
