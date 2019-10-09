@@ -2,10 +2,10 @@
   "name": "react-pwa-boilerplate",
   "version": "1.0.0",
   "description": "React PWA Boilerplate",
-  "main": "index.js",
+  "main": "app.tsx",
   "scripts": {
-    "dev": "webpack-dev-server --env.ENVIRONMENT_FILE_NAME=.env.development --config webpack/webpack.config.js",
-    "build": "cross-env npm run clean && webpack --env.ENVIRONMENT_FILE_NAME=.env --config webpack/webpack.production.config.js --progress --profile --colors --debug",
+    "dev": "webpack-dev-server --env.ENVIRONMENT_FILE_NAME=.env.development --config webpack/webpack.config.ts",
+    "build": "cross-env npm run clean && webpack --env.ENVIRONMENT_FILE_NAME=.env --config webpack/webpack.production.config.ts --progress --profile --colors --debug",
     "serve": "cross-env babel-node --extensions .ts server/index.ts serve",
     "clean": "rimraf dist",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src ./stories",
