@@ -22,7 +22,8 @@
           "webpack/**/*.*",
           "server/**/*.*",
           "stories/**/*.*",
-          "**/*.spec.js"
+          "**/*.test.*",
+          "setupTests.ts"
         ]
       }
     ],
@@ -107,6 +108,7 @@
     ]
   },
   "env": {
-    "browser": true
+    "browser": true,
+    "jest": true
   }
 }
