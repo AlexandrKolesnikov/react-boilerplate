@@ -4,8 +4,9 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { generateConfig as generateBasicConfig, moduleRules } from './constants';
 import { IEnvironment } from './types';
 
-const generateConfig = (env: IEnvironment) => {
+export default (env: IEnvironment): webpack.Configuration => {
   const basicConfig = generateBasicConfig(env);
+  const { module: basicConfigModule = {} as webpack.Module } = basicConfig;
 
   return {
     ...basicConfig,
@@ -13,25 +14,25 @@ const generateConfig = (env: IEnvironment) => {
     devtool: 'source-map',
     module: {
       rules: [
-        ...basicConfig.module.rules,
+        ...basicConfigModule.rules,
         {
           ...moduleRules.cssLoader,
           use: [
             MiniCssExtractPlugin.loader,
-            ...moduleRules.cssLoader.use,
+            ...moduleRules.cssLoader.use as webpack.RuleSetUseItem[],
           ],
         },
         {
           ...moduleRules.scssLoader,
           use: [
             MiniCssExtractPlugin.loader,
-            ...moduleRules.scssLoader.use,
+            ...moduleRules.scssLoader.use as webpack.RuleSetUseItem[],
           ],
         },
       ],
     },
     plugins: [
-      ...basicConfig.plugins,
+      ...basicConfig.plugins || [],
       new webpack.optimize.OccurrenceOrderPlugin(true),
       new webpack.LoaderOptionsPlugin({
         minimize: true,
@@ -55,5 +56,3 @@ const generateConfig = (env: IEnvironment) => {
     },
   };
 };
-
-export default (env: IEnvironment) => generateConfig(env);

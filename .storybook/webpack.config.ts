@@ -20,7 +20,7 @@ const isPluginIgnored = (plugin: Plugin) => (
   pluginsToBeIgnored.some(pluginClass => plugin instanceof pluginClass)
 );
 
-const devConfigPlugins = devConfig.plugins.filter(plugin => !isPluginIgnored(plugin));
+const devConfigPlugins = (devConfig.plugins || []).filter(plugin => !isPluginIgnored(plugin));
 
 export default ({ config }: { config: webpack.Configuration }) => {
   const { module = {} as webpack.Module, resolve = {} as webpack.Resolve } = config;
