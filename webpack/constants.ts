@@ -12,12 +12,25 @@ const SOURCE_DIR = path.resolve(__dirname, '../src');
 
 export const BUILD_DIR = path.resolve(__dirname, '../dist');
 
-export const moduleRules = {
+export const moduleRules: { [key: string]: webpack.RuleSetRule } = {
   esLoader: {
+    test: /\.(t|j)sx?$/,
     enforce: 'pre',
-    test: /\.[jt]s|[jt]sx$/,
-    loader: 'babel-loader',
+    use: [
+      {
+        loader: 'awesome-typescript-loader',
+      },
+    ],
     exclude: /node_modules/,
+  },
+  esSourceMapLoader: {
+    test: /\.js$/,
+    enforce: 'pre',
+    use: [
+      {
+        loader: 'source-map-loader',
+      },
+    ],
   },
   svgLoader: {
     test: /\.svg$/,
@@ -94,16 +107,17 @@ export const moduleRules = {
   },
 };
 
-export const generateConfig = (env: IEnvironment) => {
+export const generateConfig = (env: IEnvironment): webpack.Configuration => {
   const environmentFileName = env.ENVIRONMENT_FILE_NAME;
   const environmentFilePath = path.resolve(__dirname, `../environments/${environmentFileName}`);
   const parsedEnvironmentVariables = dotenv.config({ path: environmentFilePath }).parsed;
 
   return {
+    devtool: 'source-map',
     entry: [
       './app.tsx',
       './styles/app.scss',
-    ],
+    ] as string[],
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
@@ -116,6 +130,7 @@ export const generateConfig = (env: IEnvironment) => {
     module: {
       rules: [
         moduleRules.esLoader,
+        moduleRules.esSourceMapLoader,
         moduleRules.svgLoader,
         moduleRules.fontsLoader,
         moduleRules.imagesLoader,
