@@ -14,6 +14,7 @@
     "stylelint-fix": "npm run stylelint -- --fix",
     "check-types": "tsc",
     "test": "jest",
+    "test-update-snapshots": "npm run test -- -u",
     "test:watch": "npm run test -- --watch",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
