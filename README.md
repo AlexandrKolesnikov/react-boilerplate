@@ -32,18 +32,42 @@ code that you can use to deploy it to your hosting. You can take the result at t
 npm run build
 ```
 
-## Useful Commands
-`npm run lint` -
-Check Project for ESLint errors and warnings. Very useful in pair with some CI/CD or Git Hooks.
-
-`npm run lint-fix` -
-Automatically resolve as much as possible ESLint errors with
+## Useful Commands 
+`npm run serve` -
+Runs local HTTP server targeting `~/dist/` directory as public at the [http://localhost:4000](http://localhost:4000).
 
 `npm run clean` -
-Removes Production Build folder
+Removes Production Build folder `~/dist/`.
 
-`npm run serve` -
-Starts local HTTP server to serve Production Build code at the localhost
+`npm run lint` -
+Checks Project for ESLint errors and warnings.
+
+`npm run lint-fix` -
+Automatically resolve as much as possible ESLint errors. If not all resolved will throw an error.
+
+`npm run stylelint` -
+Checks Project for SCSS or CSS stylelint errors and warnings.
+
+`npm run stylelint-fix` -
+Automatically resolve as much as possible stylelint errors and warnings. If not all resolved will throw an error.
+
+`npm run check-types` -
+Checks the Project for TypeScript typings issues.
+
+`npm run test` -
+Runs all automatic tests and shows how many tests passed and broken.
+
+`npm run test-update-snapshot` -
+Updates tests snapshots and shows how many tests passed and broken.
+
+`npm run test-watch` -
+Watches files for changes and runs tests related to changed files.
+
+`npm run storybook` -
+Runs Storybook which is an open-source tool for developing UI components in isolation. It makes building stunning UIs organized and efficient.
+
+`npm run build-storybook` -
+Builds static Storybook to the `~/storybook-static/`
 
 `npm run deploy-dev` -
 You can use here any command or commands sequence to deploy project to the VPS or hosting.
