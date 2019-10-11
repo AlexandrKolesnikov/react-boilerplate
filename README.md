@@ -77,7 +77,6 @@ You can use here any command or commands sequence to deploy project to the VPS o
 ## Code Quality Guards
 
 #### [TypeScript](http://www.typescriptlang.org)
-It's a typed superset of JavaScript that compiles to plain JavaScript.
 Types help to build a more scalable, readable and stable application with an increase of developer productivity and potential time-saving.
 
 #### [ESLint](https://eslint.org)
@@ -95,7 +94,7 @@ You can see more details below in [related section](#testing).
 #### [Git Hooks](https://git-scm.com/docs/githooks)
 You cannot commit and push changes before the TypeScript, ESLint and Stylelint checks are passed and the errors are fixed.
 By default, hooks will try to fix as much as possible errors automatically. If there are not all errors fixed in an automatic way - you need to fix them manually.
-![Git Hooks Error](src/assets/images/readmemd/git-hooks.gif)
+![Git Hooks Error](docs/assets/readmemd/git-hooks.gif)
 
 ## Environments Settings
 
@@ -109,8 +108,8 @@ Boilerplate uses environment variables to be well customizable across different 
 All environments files should be placed in the `~/environments/` directory. Then you can just specify a environment file name during build time via environment variable `ENVIRONMENT_FILE_NAME`.
 
 #### Usage example:
-![Environment Settings usage example in the package.json](src/assets/images/readmemd/env-settings.png)
-![Environment Settings usage example in the code](src/assets/images/readmemd/env-settings-usage.png)
+![Environment Settings usage example in the package.json](docs/assets/readmemd/env-settings.png)
+![Environment Settings usage example in the code](docs/assets/readmemd/env-settings-usage.png)
 
 ## Testing
 
@@ -135,7 +134,7 @@ Updates test snapshots and then show how many tests passed or broken.
 `npm run test-watch` -
 Watches files for changes and runs tests related to changed files and other interactive features such as a search for specific tests via pattern.
 
-![Tests Flow](src/assets/images/readmemd/tests-flow.gif)
+![Tests Flow](docs/assets/readmemd/tests-flow.gif)
 
 ## License
 React PWA Boilerplate is [licensed as MIT](https://github.com/facebook/create-react-app/blob/master/LICENSE).
