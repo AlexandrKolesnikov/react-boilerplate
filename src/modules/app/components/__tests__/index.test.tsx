@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import App from '../index';
 
 describe('App Module/Components', () => {
-  it('<App /> should be rendered', () => {
+  it('<App /> should be rendered without children', () => {
     const component = shallow(<App />);
 
     expect(component).toMatchSnapshot();
