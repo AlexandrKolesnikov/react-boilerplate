@@ -46,9 +46,27 @@ You can use here any command or commands sequence to deploy project to the VPS o
 
 ## Git Flow
 
-#### Git Hooks
+## Code Quality Guards
 
-You cannot commit and push changes before the ESLint is passed and the errors are corrected.
+#### [TypeScript](http://www.typescriptlang.org)
+It's a typed superset of JavaScript that compiles to plain JavaScript.
+Types help to build a more scalable, readable and stable application with an increase of developer productivity and potential time-saving.
+
+#### [ESLint](https://eslint.org)
+The pluggable linting utility for JavaScript/TypeScript and JSX/TSX files.
+It helps to write code in such a way that it is in a single code-style as if written by one developer, which saves a lot of time
+on maintainability and introducing new developers into the team. ESLint also avoids some commonplace errors, such as a forgotten semicolon,
+an attempt to reassign a value to a constant, etc., which also saves time during the Code Review and debug.
+
+#### [Stylelint](https://stylelint.io)
+The pluggable linting utility for style files of the Project. It's almost the same as ESLint, but for styles :)
+
+#### [Automatic Tests](##testing)
+You can see more details below in [related section](##testing).
+
+#### [Git Hooks](https://git-scm.com/docs/githooks)
+You cannot commit and push changes before the TypeScript, ESLint and Stylelint checks are passed and the errors are fixed.
+By default, hooks will try to fix as much as possible errors automatically. If there are not all errors fixed in an automatic way - you need to fix them manually.
 ![Git Hooks Error](src/assets/images/readmemd/git-hooks.gif)
 
 ## Environments Settings
