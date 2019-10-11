@@ -4,7 +4,6 @@
   "description": "React PWA Boilerplate",
   "main": "app.tsx",
   "scripts": {
-    "set-ts-node-config": "cross-env TS_NODE_PROJECT=ts-node-config.json",
     "dev": "npm run set-ts-node-config -- webpack-dev-server --env.ENVIRONMENT_FILE_NAME=.env.development --config webpack/webpack.config.ts",
     "build": "cross-env npm run clean && npm run set-ts-node-config -- webpack --env.ENVIRONMENT_FILE_NAME=.env --config webpack/webpack.production.config.ts --progress --profile --colors --debug",
     "serve": "npm run set-ts-node-config -- ts-node server/index.ts",
@@ -16,9 +15,10 @@
     "check-types": "tsc",
     "test": "jest",
     "test-update-snapshots": "npm run test -- -u",
-    "test:watch": "npm run test -- --watch",
+    "test-watch": "npm run test -- --watch",
     "storybook": "npm run set-ts-node-config -- start-storybook -p 6006",
-    "build-storybook": "npm run set-ts-node-config -- build-storybook"
+    "build-storybook": "npm run set-ts-node-config -- build-storybook",
+    "set-ts-node-config": "cross-env TS_NODE_PROJECT=ts-node-config.json"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
