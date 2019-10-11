@@ -62,8 +62,30 @@ Environment variables are useful when:
 * Values change frequently and are highly dynamic.
 * Environment variables can be changed easily - especially when running in CI.
 
-In the package.json file, you can customize the commands that will run files of different environments depending on your needs.
-![Git Hooks Error](src/assets/images/readmemd/env-settings.png)
+## Testing
+
+Automated tests give you confidence that your module or unit is working as intended. Such tests can be run as much as you like.
+Successful execution of the tests will show the developer that his changes did not break anything, that it was not planned to break.
+
+A failed test will reveal that changes have been made to the code that changes or break their behavior.
+Examining the error that the failed test gives and comparing the expected result with the obtained one will make it possible
+to understand where the error occurred, whether it is in the code or in the requirements.
+
+#### Boilerplate have next predefined instruments for testing:
+- [Jest](https://jestjs.io/) - Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
+- [Enzyme](https://airbnb.io/enzyme/) - Enzyme is a JavaScript Testing utility for React that makes it easier to test your React Components' output. You can also manipulate, traverse, and in some ways simulate runtime given the output.
+
+#### Useful commands
+`npm run test` -
+Runs all automatic tests and shows how many tests passed or broken.
+
+`npm run test-update-snapshot` -
+Updates test snapshots and then show how many tests passed or broken.
+
+`npm run test-watch` -
+Watches files for changes and runs tests related to changed files and other interactive features such as a search for specific tests via pattern.
+
+![Tests Flow](src/assets/images/readmemd/tests-flow.gif)
 
 ## License
 React PWA Boilerplate is [licensed as MIT](https://github.com/facebook/create-react-app/blob/master/LICENSE).
