@@ -1,29 +1,33 @@
 # React PWA Boilerplate
-Admin part of the Double Map tickets system Mobile Application
+Boilerplate for quick start of modular ReactJS application using TypeScript, Redux, Redux-Saga and SCSS
+with predefined Code Quality tools and other helpful things.
 
 ## Basic Setup
 These steps are required before further steps.
 
 ### Machine Requirements
 You need to have installed:  
-- [Node.js](https://nodejs.org/en/)  
-- [NPM Package manager](https://www.npmjs.com/)  
-- Cloned or downloaded version of this project
+- [Node.js](https://nodejs.org/en/)
+- [NPM Package manager](https://www.npmjs.com/)
+- Cloned or downloaded version of this Project
 
-To prepare Application for further steps after repository clone you need run next commands:
+To prepare Application for further steps after repository clone you need to run next commands:
 ```sh
 cd <PROJECT_DIR>
 npm install
 ```
+These commands are going to help you to install all project dependencies.
 
 ## Development Start
-To run Application in development mode you need to run `npm run dev`. As result, you will get fully completed local development environment.
+To run Application in development mode you need to run `npm run dev`.
+As a result, you will get a fully completed local development environment and run a development server at the [http://localhost:3000](http://localhost:3000). 
 ```sh
 npm run dev
 ```
 
 ## Build Production
-To build optimized production version you need to run `npm run build`, after completion, you will have bundled production code that you can use to deploy it to your hosting. You can take the result at the `~/dist` folder
+To build an optimized production version you need to run `npm run build`, after completion, you will have bundled production
+code that you can use to deploy it to your hosting. You can take the result at the `~/dist/` folder
 ```sh
 npm run build
 ```
