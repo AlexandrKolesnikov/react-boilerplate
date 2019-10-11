@@ -61,7 +61,7 @@ an attempt to reassign a value to a constant, etc., which also saves time during
 #### [Stylelint](https://stylelint.io)
 The pluggable linting utility for style files of the Project. It's almost the same as ESLint, but for styles :)
 
-#### [Automatic Tests](##testing)
+#### [Automatic Tests](#testing)
 You can see more details below in [related section](##testing).
 
 #### [Git Hooks](https://git-scm.com/docs/githooks)
