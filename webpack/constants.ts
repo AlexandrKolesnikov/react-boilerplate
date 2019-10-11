@@ -14,7 +14,7 @@ export const BUILD_DIR = path.resolve(__dirname, '../dist');
 
 export const moduleRules: { [key: string]: webpack.RuleSetRule } = {
   esLoader: {
-    test: /\.(t|j)sx?$/,
+    test: /\.([tj])sx?$/,
     enforce: 'pre',
     use: [
       {
@@ -34,17 +34,7 @@ export const moduleRules: { [key: string]: webpack.RuleSetRule } = {
   },
   svgLoader: {
     test: /\.svg$/,
-    use: [
-      {
-        loader: 'babel-loader',
-      },
-      {
-        loader: 'react-svg-loader',
-        options: {
-          jsx: true,
-        },
-      },
-    ],
+    use: ['@svgr/webpack'],
   },
   fontsLoader: {
     test: /\.(woff|woff2|eot|ttf|otf)$/,
