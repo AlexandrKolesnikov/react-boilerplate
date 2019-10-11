@@ -69,10 +69,22 @@ Runs Storybook which is an open-source tool for developing UI components in isol
 `npm run build-storybook` -
 Builds static Storybook to the `~/storybook-static/`
 
-`npm run deploy-dev` -
-You can use here any command or commands sequence to deploy project to the VPS or hosting.
+## Architecture
 
-## Git Flow
+### Basic Info
+* [TypeScript](http://www.typescriptlang.org) - It's a typed superset of JavaScript that compiles to plain JavaScript.
+* [Redux](https://redux.js.org) - State management of the Application.
+* [Redux-Saga](https://redux-saga.js.org) - Redux middleware library, that is designed to make handling side effects in your Redux Application nice and simple.
+* [Redux-Form](https://redux-form.com) - Helps to flexible and predictable manage forms state in Redux.
+* [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser. Helps to organize all HTTP request of the Application.
+* [SASS (SCSS syntax)](https://sass-lang.com) - CSS pre-processor that helps to organize styles of the Application.
+
+### Data Flow
+Redux architecture revolves around a strict unidirectional data flow.
+
+This means that all data in an application follows the same lifecycle pattern, making the logic of your app more predictable and easier to understand.
+You can read more [here](https://redux.js.org/basics/data-flow).
+![Data Flow](docs/assets/readmemd/data-flow.gif)
 
 ## Code Quality Guards
 
