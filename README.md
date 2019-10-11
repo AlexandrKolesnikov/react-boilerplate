@@ -51,16 +51,20 @@ You can use here any command or commands sequence to deploy project to the VPS o
 You cannot commit and push changes before the ESLint is passed and the errors are corrected.
 ![Git Hooks Error](src/assets/images/readmemd/git-hooks.gif)
 
-## Environment Settings
+## Environments Settings
 
-In the project we use environment variables.
+Boilerplate uses environment variables to be well customizable across different environments.
 
-Environment variables are useful when:
-
-* Values are different across developer machines.
-* Values are different across multiple environments: (dev, staging, qa, prod).
+#### Environment variables are useful when:
+* Values are different across multiple environments(such as Development, QA, Staging, Production).
 * Values change frequently and are highly dynamic.
-* Environment variables can be changed easily - especially when running in CI.
+* Environment variables can be changed easily - especially when running in CI/CD.
+
+All environments files should be placed in the `~/environments/` directory. Then you can just specify a environment file name during build time via environment variable `ENVIRONMENT_FILE_NAME`.
+
+#### Usage example:
+![Environment Settings usage example in the package.json](src/assets/images/readmemd/env-settings.png)
+![Environment Settings usage example in the code](src/assets/images/readmemd/env-settings-usage.png)
 
 ## Testing
 
