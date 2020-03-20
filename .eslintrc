@@ -2,11 +2,17 @@
   "extends": [
     "airbnb-typescript"
   ],
-  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
   "plugins": [
     "@typescript-eslint"
   ],
   "rules": {
+    "@typescript-eslint/indent": ["error", 2, {
+      "SwitchCase": 1,
+      "ignoredNodes": ["TSTypeParameterInstantiation"]
+    }],
     "generator-star-spacing": [
       1,
       {
@@ -25,6 +31,18 @@
           "**/*.test.*",
           "setupTests.ts"
         ]
+      }
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 140
+      }
+    ],
+    "no-console": [
+      "error",
+      {
+        "allow": ["warn"]
       }
     ],
     "no-underscore-dangle": [
@@ -89,6 +107,11 @@
         "when": "multiline"
       }
     ],
+    "react/jsx-props-no-spreading": 0,
+    "react/static-property-placement": [
+      "error",
+      "static public field"
+    ],
     "space-in-parens": [
       1,
       "never"
@@ -102,11 +125,63 @@
         "assert": "nesting"
       }
     ],
-    "react/static-property-placement": [
-      "error",
-      "static public field"
+    "react/sort-comp": ["error", {
+      "order": [
+        "static-variables",
+        "static-methods",
+        "instance-variables",
+        "lifecycle",
+        "/^on.+$/",
+        "getters",
+        "setters",
+        "/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/",
+        "instance-methods",
+        "everything-else",
+        "rendering"
+      ],
+      "groups": {
+        "lifecycle": [
+          "displayName",
+          "propTypes",
+          "contextTypes",
+          "childContextTypes",
+          "mixins",
+          "statics",
+          "defaultProps",
+          "constructor",
+          "getDefaultProps",
+          "getInitialState",
+          "state",
+          "getChildContext",
+          "getDerivedStateFromProps",
+          "componentWillMount",
+          "UNSAFE_componentWillMount",
+          "componentDidMount",
+          "componentWillReceiveProps",
+          "UNSAFE_componentWillReceiveProps",
+          "shouldComponentUpdate",
+          "componentWillUpdate",
+          "UNSAFE_componentWillUpdate",
+          "getSnapshotBeforeUpdate",
+          "componentDidUpdate",
+          "componentDidCatch",
+          "componentWillUnmount"
+        ],
+        "rendering": [
+          "/^render.+$/",
+          "render"
     ]
+      }
+    }]
   },
+  "overrides": [
+    {
+      "files": ["**/*.tsx"],
+      "rules": {
+        "react/prop-types": "off"
+      }
+    }
+  ],
   "env": {
     "browser": true,
     "jest": true
