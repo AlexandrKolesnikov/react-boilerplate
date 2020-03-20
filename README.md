@@ -1,4 +1,4 @@
-# React PWA Boilerplate
+# React Boilerplate
 Boilerplate for quick start of modular ReactJS application using TypeScript, Redux, Redux-Saga and SCSS
 with predefined Code Quality tools and other helpful things.
 
@@ -16,7 +16,7 @@ To prepare Application for further steps after repository clone you need to run 
 cd <PROJECT_DIR>
 npm install
 ```
-These commands are going to help you to install all project dependencies.
+These commands are going to help you to install all Project dependencies.
 
 ## Development Start
 To run Application in development mode you need to run `npm run dev`.
@@ -73,6 +73,7 @@ Builds static Storybook to the `~/storybook-static/`
 
 ### Basic Info
 * [TypeScript](http://www.typescriptlang.org) - It's a typed superset of JavaScript that compiles to plain JavaScript.
+* [React](https://reactjs.org) - A JavaScript library for building user interfaces.
 * [Redux](https://redux.js.org) - State management of the Application.
 * [Redux-Saga](https://redux-saga.js.org) - Redux middleware library, that is designed to make handling side effects in your Redux Application nice and simple.
 * [Redux-Form](https://redux-form.com) - Helps to flexible and predictable manage forms state in Redux.
@@ -110,7 +111,7 @@ By default, hooks will try to fix as much as possible errors automatically. If t
 
 ## Environments Settings
 
-Boilerplate uses environment variables to be well customizable across different environments.
+Project uses environment variables to be well customizable across different environments.
 
 #### Environment variables are useful when:
 * Values are different across multiple environments(such as Development, QA, Staging, Production).
@@ -132,7 +133,7 @@ A failed test will reveal that changes have been made to the code that changes o
 Examining the error that the failed test gives and comparing the expected result with the obtained one will make it possible
 to understand where the error occurred, whether it is in the code or in the requirements.
 
-#### Boilerplate have next predefined instruments for testing:
+#### Project have next predefined instruments for testing:
 - [Jest](https://jestjs.io/) - Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
 - [Enzyme](https://airbnb.io/enzyme/) - Enzyme is a JavaScript Testing utility for React that makes it easier to test your React Components' output. You can also manipulate, traverse, and in some ways simulate runtime given the output.
 
@@ -149,4 +150,4 @@ Watches files for changes and runs tests related to changed files and other inte
 ![Tests Flow](docs/assets/readmemd/tests-flow.gif)
 
 ## License
-React PWA Boilerplate is [licensed as MIT](https://github.com/facebook/create-react-app/blob/master/LICENSE).
+Project is licensed under the [MIT](https://opensource.org/licenses/MIT) license.
