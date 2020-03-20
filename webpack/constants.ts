@@ -9,6 +9,7 @@ import { IEnvironment } from './types';
 
 const STATIC_DIR = path.resolve(__dirname, '../static');
 const SOURCE_DIR = path.resolve(__dirname, '../src');
+const ASSETS_SOURCE_DIR = `${SOURCE_DIR}/assets`;
 
 export const BUILD_DIR = path.resolve(__dirname, '../dist');
 
@@ -105,7 +106,7 @@ export const generateConfig = (env: IEnvironment): webpack.Configuration => {
   return {
     devtool: 'source-map',
     entry: [
-      './app.tsx',
+      './index.tsx',
       './styles/app.scss',
     ] as string[],
     resolve: {
@@ -133,7 +134,7 @@ export const generateConfig = (env: IEnvironment): webpack.Configuration => {
       }),
       new CopyWebpackPlugin([
         { from: STATIC_DIR, to: '' },
-        { from: `${SOURCE_DIR}/assets`, to: 'assets' },
+        { from: ASSETS_SOURCE_DIR, to: 'assets' },
       ]),
       new MiniCssExtractPlugin({
         filename: './styles/style.css',

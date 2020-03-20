@@ -4,7 +4,7 @@ import { generateConfig as generateBasicConfig, moduleRules } from './constants'
 import { IEnvironment } from './types';
 
 const BUILD_DIR = 'dist';
-const DEV_SERVER_HOST = '127.0.0.1';
+const DEV_SERVER_HOST = 'localhost';
 const DEV_SERVER_PORT = 3000;
 
 export default (env: IEnvironment): webpack.Configuration => {
