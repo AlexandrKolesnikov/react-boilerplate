@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { Switch as ReactRouterSwitch, Route, Redirect } from 'react-router-dom';
-import { DEFAULT_ROUTE, ROUTES } from './constants';
-import Home from '../modules/home/components/index';
+import { DEFAULT_ROUTE, ROUTES_MAP } from './constants';
 
-const Switch = () => (
+const ROUTES = [
+  { ...ROUTES_MAP.home, component: lazy(() => import('../modules/home/components')) },
+];
+
+export const Switch = () => (
   <ReactRouterSwitch>
-    <Route
-      path={ROUTES.home.path}
-      exact={ROUTES.home.exact}
-      component={Home}
-    />
+    { ROUTES.map((route) => (
+      <Route
+        key={route.path}
+        {...route}
+      />
+    )) }
     <Redirect to={DEFAULT_ROUTE.path} />
   </ReactRouterSwitch>
 );
-
-export default Switch;
