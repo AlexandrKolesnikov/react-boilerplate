@@ -1,17 +1,13 @@
 import React from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import './styles/index.scss';
 
-type Props = {
-  className?: string,
-};
+interface ICircularLoaderProps {
+  className?: string
+}
 
-const defaultProps: Props = {
-  className: '',
-};
-
-const CircularLoader = ({ className }: Props) => (
-  <div className={classnames('circular-loader', className)}>
+export const CircularLoader: React.FC<ICircularLoaderProps> = ({ className }) => (
+  <div className={classNames('circular-loader', className)}>
     <svg className="circular-loader__circle" viewBox="25 25 50 50">
       <circle
         className="circular-loader__circle-path"
@@ -25,7 +21,3 @@ const CircularLoader = ({ className }: Props) => (
     </svg>
   </div>
 );
-
-CircularLoader.defaultProps = defaultProps;
-
-export default CircularLoader;
