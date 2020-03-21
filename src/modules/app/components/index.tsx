@@ -1,15 +1,10 @@
 import React from 'react';
 import './index.scss';
 
-type Props = {
-  children: React.ReactNode,
-};
+interface IAppProps {
+}
 
-const defaultProps: Props = {
-  children: null,
-};
-
-const App = ({ children }: Props) => (
+export const App: React.FC<IAppProps> = ({ children }) => (
   <div className="app">
     <div className="app__main-container">
       <main className="app__content">
@@ -18,7 +13,3 @@ const App = ({ children }: Props) => (
     </div>
   </div>
 );
-
-App.defaultProps = defaultProps;
-
-export default App;
