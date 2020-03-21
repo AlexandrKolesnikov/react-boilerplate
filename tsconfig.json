@@ -1,18 +1,25 @@
 {
   "compilerOptions": {
     "outDir": "./dist/", // Path to output directory
-    "sourceMap": true, // Allow sourcemap support
-    "target": "es5", // Target latest version of ECMAScript.
-    "module": "es6", // Specify module code generation
-    "moduleResolution": "node", // Search under node_modules for non-relative imports.
-    "jsx": "react", // Allows JSX
-    "allowJs": true, // Process & infer types from .js files.
+    "target": "es5", // Target latest version of ECMAScript.,
+    "module": "esnext", // Specify module code generation,
+    "moduleResolution": "node", // Search under node_modules for non-relative imports.,
+    "jsx": "react", // Allows JSX,
+    "sourceMap": true, // Allow sourcemap support,
+    "allowJs": true, // Process & infer types from .js files.,
     "noEmit": true, // Don't emit; allow Babel to transform files.
     "strict": true, // Enable strictest settings like strictNullChecks & noImplicitAny.
+    "forceConsistentCasingInFileNames": true, // Disallow inconsistently-cased references to the same file.
+    "resolveJsonModule": true, // Enables ability to import *.json,
     "isolatedModules": true, // Disallow features that require cross-file information for emit.
     "esModuleInterop": true, // Import non-ES modules as default imports.
     "skipLibCheck": true // Skips checking of the node_modules
   },
+  "lib": [
+    "dom",
+    "dom.iterable",
+    "esnext"
+  ],
   "include": [
     "./"
   ],
