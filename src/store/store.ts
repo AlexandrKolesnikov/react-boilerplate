@@ -1,18 +1,16 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, Middleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { createLogger } from 'redux-logger';
-import { routerMiddleware } from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import appHistory from '../routing/history';
-import rootSaga from './rootSaga';
-import combinedReducers from './rootReducer';
-import { IAppState } from './types';
+import { rootReducer } from './rootReducer';
+import { rootSaga } from './rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
-const router = routerMiddleware(appHistory);
-const middlewares = [sagaMiddleware, router];
+const middlewares: Middleware[] = [sagaMiddleware];
 
 if (process.env.NODE_ENV !== 'production') {
+  // eslint-disable-next-line global-require
+  const { createLogger } = require('redux-logger');
+
   const logger = createLogger({
     level: 'info',
     collapsed: true,
@@ -23,9 +21,9 @@ if (process.env.NODE_ENV !== 'production') {
 
 const createStoreWithMiddleware = applyMiddleware(...middlewares);
 
-export function configureStore(initialState?: IAppState) {
+export function configureStore(initialState?: ReturnType<typeof rootReducer>) {
   const store = createStore(
-    combinedReducers,
+    rootReducer,
     initialState,
     composeWithDevTools(
       createStoreWithMiddleware,
@@ -37,10 +35,4 @@ export function configureStore(initialState?: IAppState) {
   return store;
 }
 
-const store = configureStore();
-
-if (process.env.NODE_ENV !== 'production') {
-  (window as any).store = store;
-}
-
-export default store;
+export const store = configureStore();
