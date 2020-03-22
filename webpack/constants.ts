@@ -7,10 +7,10 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import autoprefixer from 'autoprefixer';
 import { IEnvironment } from './types';
 
-const STATIC_DIR = path.resolve(__dirname, '../static');
 const SOURCE_DIR = path.resolve(__dirname, '../src');
 const ASSETS_SOURCE_DIR = `${SOURCE_DIR}/assets`;
 
+export const STATIC_DIR = path.resolve(__dirname, '../static');
 export const BUILD_DIR = path.resolve(__dirname, '../dist');
 
 export const moduleRules: { [key: string]: webpack.RuleSetRule } = {

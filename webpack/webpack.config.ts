@@ -1,9 +1,7 @@
-import path from 'path';
 import webpack from 'webpack';
-import { generateConfig as generateBasicConfig, moduleRules } from './constants';
+import { generateConfig as generateBasicConfig, moduleRules, STATIC_DIR } from './constants';
 import { IEnvironment } from './types';
 
-const BUILD_DIR = 'dist';
 const DEV_SERVER_HOST = 'localhost';
 const DEV_SERVER_PORT = 3000;
 
@@ -29,12 +27,15 @@ export default (env: IEnvironment): webpack.Configuration => {
     devServer: {
       hot: true,
       historyApiFallback: true,
+      watchContentBase: true,
       disableHostCheck: true,
+      compress: true,
+      overlay: true,
+      open: true,
       host: DEV_SERVER_HOST,
-      contentBase: path.resolve(__dirname, BUILD_DIR),
+      contentBase: STATIC_DIR,
       publicPath: `http://${DEV_SERVER_HOST}:${DEV_SERVER_PORT}`,
       public: `${DEV_SERVER_HOST}:${DEV_SERVER_PORT}`,
-      open: true,
       port: DEV_SERVER_PORT,
     },
     module: {
