@@ -33,6 +33,9 @@ npm run build
 ```
 
 ## Useful Commands 
+`npm run build:debug` -
+Runs build of the optimized production version with enabled debug mode of the loaders using [webpack --debug](https://webpack.js.org/api/cli/#debug-options).
+ 
 `npm run serve` -
 Runs local HTTP server targeting `~/dist/` directory as public at the [http://localhost:4000](http://localhost:4000).
 
@@ -42,13 +45,13 @@ Removes Production Build folder `~/dist/`.
 `npm run lint` -
 Checks Project for ESLint errors and warnings.
 
-`npm run lint-fix` -
+`npm run lint:fix` -
 Automatically resolve as much as possible ESLint errors. If not all resolved will throw an error.
 
 `npm run stylelint` -
 Checks Project for SCSS or CSS stylelint errors and warnings.
 
-`npm run stylelint-fix` -
+`npm run stylelint:fix` -
 Automatically resolve as much as possible stylelint errors and warnings. If not all resolved will throw an error.
 
 `npm run check-types` -
@@ -57,16 +60,16 @@ Checks the Project for TypeScript typings issues.
 `npm run test` -
 Runs all automatic tests and shows how many tests passed and broken.
 
-`npm run test-update-snapshot` -
+`npm run test:update-snapshot` -
 Updates tests snapshots and shows how many tests passed and broken.
 
-`npm run test-watch` -
+`npm run test:watch` -
 Watches files for changes and runs tests related to changed files.
 
 `npm run storybook` -
 Runs Storybook which is an open-source tool for developing UI components in isolation. It makes building stunning UIs organized and efficient.
 
-`npm run build-storybook` -
+`npm run storybook:build` -
 Builds static Storybook to the `~/storybook-static/`
 
 ## Architecture
@@ -141,10 +144,10 @@ to understand where the error occurred, whether it is in the code or in the requ
 `npm run test` -
 Runs all automatic tests and shows how many tests passed or broken.
 
-`npm run test-update-snapshot` -
+`npm run test:update-snapshot` -
 Updates test snapshots and then show how many tests passed or broken.
 
-`npm run test-watch` -
+`npm run test:watch` -
 Watches files for changes and runs tests related to changed files and other interactive features such as a search for specific tests via pattern.
 
 ![Tests Flow](docs/assets/readmemd/tests-flow.gif)
