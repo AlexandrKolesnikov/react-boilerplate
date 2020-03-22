@@ -5,6 +5,7 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import autoprefixer from 'autoprefixer';
+import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import { IEnvironment } from './types';
 
 const SOURCE_DIR = path.resolve(__dirname, '../src');
@@ -139,6 +140,7 @@ export const generateConfig = (env: IEnvironment): webpack.Configuration => {
       ],
     },
     plugins: [
+      new CaseSensitivePathsPlugin(),
       new webpack.EnvironmentPlugin({
         ...process.env,
         ...parsedEnvironmentVariables,
