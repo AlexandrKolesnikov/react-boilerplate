@@ -12,69 +12,16 @@
   <link rel="shortcut icon" href="/assets/images/favicons/favicon.ico">
   <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-32x32.png">
   <title>React Boilerplate</title>
+  <link rel="stylesheet" property="stylesheet" href="./reset.css">
   <style>
   /* stylelint-disable at-rule-no-vendor-prefix */
   /* stylelint-disable property-no-vendor-prefix */
   /* stylelint-disable selector-max-id */
   /* stylelint-disable selector-max-specificity */
-  /* stylelint-disable selector-max-universal */
-  /* stylelint-disable declaration-no-important */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    border: 0;
-    border-radius: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: none;
-    -ms-text-size-adjust: none;
-    text-size-adjust: none;
-  }
-
-  *:after,
-  *:before {
-    box-sizing: border-box;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  textarea {
-    resize: none;
-  }
-
-  input,
-  textarea {
-    -webkit-appearance: none !important;
-    -moz-appearance: none;
-    appearance: none !important;
-  }
-
-  input:focus,
-  textarea:focus {
-    outline: none;
-  }
-
   html,
   body {
     width: 100%;
     height: 100%;
-  }
-
-  table {
-    border-spacing: 0;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p {
-    font-weight: 400;
   }
 
   #root {
@@ -107,11 +54,11 @@
   .shell-loader__spinner {
     height: 76px;
     width: 76px;
-    -webkit-animation: spinner-1 4.8s linear infinite;
-    animation: spinner-1 4.8s linear infinite;
+    -webkit-animation: shell-spinner-1 4.8s linear infinite;
+    animation: shell-spinner-1 4.8s linear infinite;
   }
 
-  @-webkit-keyframes spinner-1 {
+  @-webkit-keyframes shell-spinner-1 {
     0% {
       -webkit-transform: rotate(0deg);
     }
@@ -121,7 +68,7 @@
     }
   }
 
-  @keyframes spinner-1 {
+  @keyframes shell-spinner-1 {
     0% {
       transform: rotate(0deg);
     }
@@ -131,7 +78,7 @@
     }
   }
 
-  .shell-loader span {
+  .shell-loader__spinner-circle {
     display: block;
     position: absolute;
     top: 0;
@@ -142,11 +89,11 @@
     height: 76px;
     width: 76px;
     clip: rect(0, 76px, 76px, 33px);
-    -webkit-animation: spinner-2 1.2s linear infinite;
-    animation: spinner-2 1.2s linear infinite;
+    -webkit-animation: shell-spinner-2 1.2s linear infinite;
+    animation: shell-spinner-2 1.2s linear infinite;
   }
 
-  @-webkit-keyframes spinner-2 {
+  @-webkit-keyframes shell-spinner-2 {
     0% {
       -webkit-transform: rotate(0deg);
     }
@@ -156,7 +103,7 @@
     }
   }
 
-  @keyframes spinner-2 {
+  @keyframes shell-spinner-2 {
     0% {
       transform: rotate(0deg);
     }
@@ -166,7 +113,7 @@
     }
   }
 
-  .shell-loader span:after {
+  .shell-loader__spinner-circle:after {
     content: '';
     position: absolute;
     top: 0;
@@ -179,11 +126,11 @@
     clip: rect(0, 76px, 76px, 33px);
     border: 3px solid #ffffff;
     border-radius: 50%;
-    -webkit-animation: spinner-3 1.2s cubic-bezier(0.77, 0, 0.175, 1) infinite;
-    animation: spinner-3 1.2s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+    -webkit-animation: shell-spinner-3 1.2s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+    animation: shell-spinner-3 1.2s cubic-bezier(0.77, 0, 0.175, 1) infinite;
   }
 
-  @-webkit-keyframes spinner-3 {
+  @-webkit-keyframes shell-spinner-3 {
     0% {
       -webkit-transform: rotate(-140deg);
     }
@@ -197,7 +144,7 @@
     }
   }
 
-  @keyframes spinner-3 {
+  @keyframes shell-spinner-3 {
     0% {
       transform: rotate(-140deg);
     }
@@ -210,7 +157,6 @@
       transform: rotate(140deg);
     }
   }
-
   /* Spinner END */
   </style>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
@@ -222,14 +168,13 @@
 <noscript>You need to enable JavaScript to run this app.</noscript>
 <div id="root">
   <div class="shell-loader">
-    <img class="shell-loader__i-logo" src="/assets/svg/logo.svg">
+    <img class="shell-loader__i-logo" src="/assets/svg/logo.svg" alt="Logo">
     <div class="shell-loader__spinner-container">
-      <div class="shell-loader__spinner"><span></span></div>
+      <div class="shell-loader__spinner">
+        <span class="shell-loader__spinner-circle"></span>
+      </div>
     </div>
   </div>
 </div>
-<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-<script async="true" src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
-<% } %>
 </body>
 </html>
