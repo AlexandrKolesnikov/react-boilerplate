@@ -12,7 +12,7 @@ export default (env: IEnvironment): webpack.Configuration => {
   const entry = [
     'react-hot-loader/patch',
     `webpack-dev-server/client?http://${DEV_SERVER_HOST}:${DEV_SERVER_PORT}`,
-    'webpack/hot/only-dev-server',
+    'webpack/hot/dev-server',
   ];
 
   if (Array.isArray(basicConfig.entry)) {
@@ -22,7 +22,7 @@ export default (env: IEnvironment): webpack.Configuration => {
   return {
     ...basicConfig,
     mode: 'development',
-    devtool: 'eval-source-map',
+    devtool: 'cheap-module-source-map',
     entry,
     devServer: {
       hot: true,
