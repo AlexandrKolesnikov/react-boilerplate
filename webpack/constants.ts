@@ -85,7 +85,7 @@ export const moduleRules: { [key: string]: webpack.RuleSetRule } = {
       {
         loader: 'sass-resources-loader',
         options: {
-          resources: path.resolve(__dirname, '../src/styles/mixins.scss'),
+          resources: path.resolve(SOURCE_DIR, './styles/mixins.scss'),
         },
       },
     ],
@@ -101,7 +101,10 @@ export const moduleRules: { [key: string]: webpack.RuleSetRule } = {
 export const generateConfig = (env: IEnvironment): webpack.Configuration => {
   const environmentFileName = env.ENVIRONMENT_FILE_NAME;
   const environmentFilePath = path.resolve(__dirname, `../environments/${environmentFileName}`);
-  const parsedEnvironmentVariables = dotenv.config({ path: environmentFilePath }).parsed;
+  const parsedEnvironmentVariables = dotenv.config({ path: environmentFilePath }).parsed || {};
+
+  const isProduction = parsedEnvironmentVariables.NODE_ENV === 'production';
+  const filesNameHash = isProduction ? '[contenthash:8]' : '[hash]';
 
   return {
     devtool: 'source-map',
@@ -113,8 +116,8 @@ export const generateConfig = (env: IEnvironment): webpack.Configuration => {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     },
     output: {
-      filename: 'js/chunk.js',
-      chunkFilename: 'js/[name].[contenthash:8].chunk.js',
+      filename: `js/[name].${filesNameHash}.js`,
+      chunkFilename: `js/[name].${filesNameHash}.chunk.js`,
       path: BUILD_DIR,
       publicPath: '/',
     },
@@ -138,13 +141,27 @@ export const generateConfig = (env: IEnvironment): webpack.Configuration => {
         { from: ASSETS_SOURCE_DIR, to: 'assets' },
       ]),
       new MiniCssExtractPlugin({
-        filename: './styles/style.css',
-        chunkFilename: '[id].css',
+        filename: `[name].${filesNameHash}.css`,
+        chunkFilename: `[id].${filesNameHash}.css`,
       }),
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, '../static/index.html'),
+        template: path.resolve(STATIC_DIR, './index.html'),
         filename: 'index.html',
-        inject: false,
+        inject: true,
+        ...(isProduction ? {
+          minify: {
+            minifyJS: true,
+            minifyCSS: true,
+            minifyURLs: true,
+            removeComments: true,
+            useShortDoctype: true,
+            collapseWhitespace: true,
+            removeEmptyAttributes: true,
+            removeRedundantAttributes: true,
+            removeStyleLinkTypeAttributes: true,
+            keepClosingSlash: true,
+          },
+        } : {}),
       }),
     ],
   };
