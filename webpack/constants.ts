@@ -8,6 +8,9 @@ import autoprefixer from 'autoprefixer';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import { IEnvironment } from './types';
 
+const FONT_ASSET_MAX_SIZE = 8192;
+const IMAGE_ASSET_MAX_SIZE = 8192;
+
 const SOURCE_DIR = path.resolve(__dirname, '../src');
 const ASSETS_SOURCE_DIR = `${SOURCE_DIR}/assets`;
 
@@ -52,20 +55,21 @@ export const moduleRules: { [key: string]: webpack.RuleSetRule } = {
       {
         loader: 'url-loader',
         options: {
-          limit: 100000,
+          limit: FONT_ASSET_MAX_SIZE,
+          name: 'assets/fonts/[name].[hash:8].[ext]',
         },
       },
     ],
   },
   imagesLoader: {
-    test: /\.(png|jpg|gif)$/,
+    test: /\.(png|jpe?g|gif|bmp)$/,
     use: [
       {
         loader: 'url-loader',
         options: {
-          limit: 8192,
+          limit: IMAGE_ASSET_MAX_SIZE,
           mimetype: 'image/[ext]',
-          name: 'assets/images/[name]_[hash].[ext]',
+          name: 'assets/images/[name].[hash:8].[ext]',
         },
       },
     ],
