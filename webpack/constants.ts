@@ -110,7 +110,7 @@ export const generateConfig = (env: IEnvironment): webpack.Configuration => {
       './styles/app.scss',
     ] as string[],
     resolve: {
-      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     },
     output: {
       filename: 'js/chunk.js',
