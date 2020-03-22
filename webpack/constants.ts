@@ -17,12 +17,19 @@ export const moduleRules: { [key: string]: webpack.RuleSetRule } = {
   esLoader: {
     test: /\.([tj])sx?$/,
     enforce: 'pre',
+    exclude: /node_modules/,
     use: [
+      {
+        loader: 'eslint-loader',
+        options: {
+          cache: true,
+          emitWarning: true,
+        },
+      },
       {
         loader: 'awesome-typescript-loader',
       },
     ],
-    exclude: /node_modules/,
   },
   esSourceMapLoader: {
     test: /\.js$/,
