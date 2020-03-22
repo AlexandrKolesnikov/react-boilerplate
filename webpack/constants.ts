@@ -44,36 +44,6 @@ export const moduleRules: { [key: string]: webpack.RuleSetRule } = {
       },
     ],
   },
-  svgLoader: {
-    test: /\.svg$/,
-    use: ['@svgr/webpack'],
-  },
-  fontsLoader: {
-    test: /\.(woff|woff2|eot|ttf|otf)$/,
-    exclude: /node_modules/,
-    use: [
-      {
-        loader: 'url-loader',
-        options: {
-          limit: FONT_ASSET_MAX_SIZE,
-          name: 'assets/fonts/[name].[hash:8].[ext]',
-        },
-      },
-    ],
-  },
-  imagesLoader: {
-    test: /\.(png|jpe?g|gif|bmp)$/,
-    use: [
-      {
-        loader: 'url-loader',
-        options: {
-          limit: IMAGE_ASSET_MAX_SIZE,
-          mimetype: 'image/[ext]',
-          name: 'assets/images/[name].[hash:8].[ext]',
-        },
-      },
-    ],
-  },
   scssLoader: {
     test: /\.scss$/,
     exclude: /node_modules/,
@@ -108,6 +78,36 @@ export const moduleRules: { [key: string]: webpack.RuleSetRule } = {
       'css-loader',
     ],
   },
+  imagesLoader: {
+    test: /\.(png|jpe?g|gif|bmp)$/,
+    use: [
+      {
+        loader: 'url-loader',
+        options: {
+          limit: IMAGE_ASSET_MAX_SIZE,
+          mimetype: 'image/[ext]',
+          name: 'assets/images/[name].[hash:8].[ext]',
+        },
+      },
+    ],
+  },
+  svgLoader: {
+    test: /\.svg$/,
+    use: ['@svgr/webpack'],
+  },
+  fontsLoader: {
+    test: /\.(woff|woff2|eot|ttf|otf)$/,
+    exclude: /node_modules/,
+    use: [
+      {
+        loader: 'url-loader',
+        options: {
+          limit: FONT_ASSET_MAX_SIZE,
+          name: 'assets/fonts/[name].[hash:8].[ext]',
+        },
+      },
+    ],
+  },
 };
 
 export const generateConfig = (env: IEnvironment): webpack.Configuration => {
@@ -138,9 +138,9 @@ export const generateConfig = (env: IEnvironment): webpack.Configuration => {
       rules: [
         moduleRules.esLoader,
         moduleRules.esSourceMapLoader,
+        moduleRules.imagesLoader,
         moduleRules.svgLoader,
         moduleRules.fontsLoader,
-        moduleRules.imagesLoader,
       ],
     },
     plugins: [
