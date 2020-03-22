@@ -13,6 +13,7 @@ export default (env: IEnvironment): webpack.Configuration => {
     ...basicConfig,
     mode: 'production',
     devtool: 'source-map',
+    bail: true,
     module: {
       rules: [
         ...basicConfigModule.rules,
