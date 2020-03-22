@@ -113,7 +113,8 @@ export const generateConfig = (env: IEnvironment): webpack.Configuration => {
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
     output: {
-      filename: 'bundle.js',
+      filename: 'js/chunk.js',
+      chunkFilename: 'js/[name].[contenthash:8].chunk.js',
       path: BUILD_DIR,
       publicPath: '/',
     },
