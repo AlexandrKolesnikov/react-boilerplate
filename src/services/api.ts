@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import queryString from 'query-string';
-import { API_URL, LOCAL_STORAGE_KEYS } from '../constants';
+import { API_URL, LocalStorageKeys } from '../constants';
 
 type makeRequest = <T>(url: string, data?: any, method?: 'POST' | 'GET' | 'PUT' | 'DELETE', headers?: Headers) => Promise<AxiosResponse<T>>;
 
@@ -37,7 +37,7 @@ export const makeRequest: makeRequest = (url, data, method = 'GET', headers = un
   const requestHeaders = {
     accept: 'application/json',
     'content-type': 'application/json;charset=utf-8',
-    Authorization: `Bearer ${localStorage.getItem(LOCAL_STORAGE_KEYS.accessToken)}`,
+    Authorization: `Bearer ${localStorage.getItem(LocalStorageKeys.accessToken)}`,
     ...headers,
   };
 
