@@ -10,6 +10,9 @@
         ],
         "ignore": [
           "after-comment"
+        ],
+        "ignore-rules": [
+          "return"
         ]
       }
     ],
@@ -142,7 +145,7 @@
       }
     ],
     "max-line-length": [
-      100,
+      140,
       {
         "ignore": "comments"
       }
@@ -212,9 +215,14 @@
     "selector-max-combinators": 1,
     "selector-max-compound-selectors": 2,
     "selector-max-empty-lines": 0,
-    "selector-max-id": 0,
+    "selector-max-id": 1,
     "selector-max-pseudo-class": 2,
-    "selector-max-specificity": "0,4,0",
+    "selector-max-specificity": [
+      "0,4,0",
+      {
+        "ignoreSelectors": ["#root"]
+      }
+    ],
     "selector-max-universal": 0,
     "selector-nested-pattern": "^&.",
     "selector-no-qualifying-type": true,

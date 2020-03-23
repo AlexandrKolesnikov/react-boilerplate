@@ -9,7 +9,6 @@
 @mixin css-lock-by-width($min-size, $max-size, $min-width, $max-width, $property: font-size, $unit: px) {
   $min-size: strip-unit($min-size);
   $max-size: strip-unit($max-size);
-
   #{$property}: calc(#{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}#{$unit}) / (#{$max-width} - #{$min-width})));
 
   @media (max-width: #{$min-width}#{$unit}) {
@@ -24,7 +23,6 @@
 @mixin css-lock-by-height($min-size, $max-size, $min-height, $max-height, $property: font-size, $unit: px) {
   $min-size: strip-unit($min-size);
   $max-size: strip-unit($max-size);
-
   #{$property}: calc(#{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-height}#{$unit}) / (#{$max-height} - #{$min-height})));
 
   @media (max-height: #{$min-height}#{$unit}) {
@@ -36,7 +34,7 @@
   }
 }
 
-@function str-replace($string, $search, $replace: "") {
+@function str-replace($string, $search, $replace: '') {
   $index: str-index($string, $search);
 
   @if ($index) {
