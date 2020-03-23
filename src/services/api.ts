@@ -1,12 +1,8 @@
-// TODO: Improve types of this file
-
+import axios, { AxiosError, AxiosResponse } from 'axios';
 import queryString from 'query-string';
 import { API_URL, LOCAL_STORAGE_KEYS } from '../constants';
 
-export interface IAPIResponse {
-  response: any,
-  data?: any,
-}
+type makeRequest = <T>(url: string, data?: any, method?: 'POST' | 'GET' | 'PUT' | 'DELETE', headers?: Headers) => Promise<AxiosResponse<T>>;
 
 export const getUrl = (path: string, queryParams: { [key: string]: string }): string => {
   const search = queryString.stringify(queryParams);
@@ -16,43 +12,40 @@ export const getUrl = (path: string, queryParams: { [key: string]: string }): st
   );
 };
 
-export const preProcessResponse = (response: any) => {
-  const { status } = response;
+export const processApiResponseError = (
+  error: AxiosError,
+  defaultErrorMessage = 'Oops! Something went wrong. Please try again later.',
+  additionMessage = '',
+) => {
+  let errorMessage = defaultErrorMessage;
 
-  return new Promise((resolve, reject) => {
-    const result: IAPIResponse = {
-      response,
-      data: null,
-    };
+  if (error.response) {
+    // TODO: Implement API specific error messages ejecting
+  }
 
-    response.text().then((text: string) => {
-      result.data = JSON.parse(text || 'null');
+  if (additionMessage) {
+    errorMessage += `\n\n${additionMessage}`;
+  }
 
-      if (status >= 200 && status < 300) {
-        resolve(result);
-      } else {
-        reject(result);
-      }
-    }).catch(reject);
-  });
+  // eslint-disable-next-line no-param-reassign
+  error.message = errorMessage;
+
+  throw error;
 };
 
-export const requestAPI = (url: string, method = 'GET', body: any, requestHeaders = {}) => {
-  const makeRequest = () => {
-    const headers = {
-      'content-type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem(LOCAL_STORAGE_KEYS.accessToken)}`,
-      ...requestHeaders,
-    };
-
-    return (
-      fetch(url, {
-        headers,
-        method,
-        body: JSON.stringify(body),
-      }).then(preProcessResponse)
-    );
+export const makeRequest: makeRequest = (url, data, method = 'GET', headers = undefined) => {
+  const requestHeaders = {
+    accept: 'application/json',
+    'content-type': 'application/json;charset=utf-8',
+    Authorization: `Bearer ${localStorage.getItem(LOCAL_STORAGE_KEYS.accessToken)}`,
+    ...headers,
   };
 
-  return makeRequest();
+  const requestConfig = {
+    headers: requestHeaders,
+    method,
+    data: JSON.stringify(data),
+  };
+
+  return axios(url, requestConfig);
 };
