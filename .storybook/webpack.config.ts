@@ -1,9 +1,8 @@
-import webpack from 'webpack';
+import webpack, { Plugin } from 'webpack';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import generateDevConfig from '../webpack/webpack.config';
 import { IEnvironment } from '../webpack/types';
-import { Plugin } from 'webpack';
 
 const env: IEnvironment = {
   ENVIRONMENT_FILE_NAME: '.env.development'
@@ -28,9 +27,15 @@ export default ({ config }: { config: webpack.Configuration }) => {
 
   config.plugins = (config.plugins || []).concat(devConfigPlugins);
 
+  const filteredRules = module.rules.filter(rule => {
+    const ruleJson = JSON.stringify(rule);
+
+    return ruleJson.indexOf('babel-loader') === -1;
+  });
+
   config.module = {
     ...module,
-    rules: (module.rules || []).concat(devModule.rules as webpack.RuleSetRule[] || []),
+    rules: (filteredRules || []).concat(devModule.rules as webpack.RuleSetRule[] || []),
   };
 
   config.resolve = {
