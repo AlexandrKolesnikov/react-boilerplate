@@ -19,7 +19,7 @@ export const BUILD_DIR = path.resolve(__dirname, '../dist');
 
 export const moduleRules: { [key: string]: webpack.RuleSetRule } = {
   esLoader: {
-    test: /\.([tj])sx?$/,
+    test: /\.[tj]sx?$/,
     enforce: 'pre',
     exclude: /node_modules/,
     use: [

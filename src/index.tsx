@@ -5,12 +5,12 @@ import { Router } from 'react-router-dom';
 import { history } from './routing/history';
 import { Switch } from './routing/switch';
 import { store } from './store/store';
-import { App } from './modules/app/components';
-import { CircularLoader } from './components/loaders/circular';
+import { App } from './modules/app/components/App';
+import { Spinner } from './components/loaders/spinner/Spinner';
 import './styles/app.scss';
 
 const AppRoot = () => (
-  <Suspense fallback={<CircularLoader />}>
+  <Suspense fallback={<Spinner />}>
     <Provider store={store}>
       <App>
         <Router history={history}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.scss';
+import './styles/App.scss';
 
 interface IAppProps {
 }

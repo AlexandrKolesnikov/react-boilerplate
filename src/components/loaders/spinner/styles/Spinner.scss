@@ -26,33 +26,33 @@
 @keyframes color {
   100%,
   0% {
-    stroke: $circular-loader-color3;
+    stroke: $spinner-color3;
   }
 
   40% {
-    stroke: $circular-loader-color2;
+    stroke: $spinner-color2;
   }
 
   66% {
-    stroke: $circular-loader-color1;
+    stroke: $spinner-color1;
   }
 
   80%,
   90% {
-    stroke: $circular-loader-color4;
+    stroke: $spinner-color4;
   }
 }
 
-.circular-loader {
-  width: $circular-loader-width;
+.spinner {
+  width: $spinner-width;
 }
 
-.circular-loader__circle {
+.spinner__circle {
   width: 100%;
   animation: rotate 2s linear infinite;
 }
 
-.circular-loader__circle-path {
+.spinner__circle-path {
   stroke-dasharray: 1, 200;
   stroke-dashoffset: 0;
   animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;

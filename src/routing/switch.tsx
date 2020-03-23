@@ -3,7 +3,7 @@ import { Switch as ReactRouterSwitch, Route, Redirect } from 'react-router-dom';
 import { DEFAULT_ROUTE, ROUTES_MAP } from './constants';
 
 const ROUTES = [
-  { ...ROUTES_MAP.home, component: lazy(() => import('../modules/home/components')) },
+  { ...ROUTES_MAP.home, component: lazy(() => import('../modules/home/components/Home')) },
 ];
 
 export const Switch = () => (
