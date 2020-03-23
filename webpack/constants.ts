@@ -24,14 +24,14 @@ export const moduleRules: { [key: string]: webpack.RuleSetRule } = {
     exclude: /node_modules/,
     use: [
       {
+        loader: 'awesome-typescript-loader',
+      },
+      {
         loader: 'eslint-loader',
         options: {
           cache: true,
           emitWarning: true,
         },
-      },
-      {
-        loader: 'awesome-typescript-loader',
       },
     ],
   },
