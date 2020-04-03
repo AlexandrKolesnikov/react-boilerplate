@@ -9,7 +9,8 @@
 @mixin css-lock-by-width($min-size, $max-size, $min-width, $max-width, $property: font-size, $unit: px) {
   $min-size: strip-unit($min-size);
   $max-size: strip-unit($max-size);
-  #{$property}: calc(#{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}#{$unit}) / (#{$max-width} - #{$min-width})));
+  $widthCoefficient: unquote('(100vw - #{$min-width}#{$unit}) / (#{$max-width} - #{$min-width})');
+  #{$property}: calc(#{$min-size + $unit} + (#{$max-size} - #{$min-size}) * (#{$widthCoefficient}));
 
   @media (max-width: #{$min-width}#{$unit}) {
     #{$property}: #{$min-size}#{$unit};
@@ -23,7 +24,8 @@
 @mixin css-lock-by-height($min-size, $max-size, $min-height, $max-height, $property: font-size, $unit: px) {
   $min-size: strip-unit($min-size);
   $max-size: strip-unit($max-size);
-  #{$property}: calc(#{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-height}#{$unit}) / (#{$max-height} - #{$min-height})));
+  $heightCoefficient: unquote('(100vh - #{$min-height}#{$unit}) / (#{$max-height} - #{$min-height})');
+  #{$property}: calc(#{$min-size + $unit} + (#{$max-size} - #{$min-size}) * (#{$heightCoefficient}));
 
   @media (max-height: #{$min-height}#{$unit}) {
     #{$property}: #{$min-size}#{$unit};
