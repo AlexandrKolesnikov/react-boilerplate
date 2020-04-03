@@ -45,6 +45,8 @@
 
 .spinner {
   width: $spinner-width;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .spinner__circle {

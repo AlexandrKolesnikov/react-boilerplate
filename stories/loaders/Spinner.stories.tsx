@@ -1,13 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
-import { text, withKnobs } from '@storybook/addon-knobs';
+import { text } from '@storybook/addon-knobs';
 import { Spinner } from '../../src/components/loaders/spinner/Spinner';
 import './styles/Spinner.stories.scss';
 
 export default {
   component: Spinner,
   title: 'Spinner',
-  decorators: [withKnobs],
 };
 
 export const Sandbox = () => (
