@@ -1,3 +1,4 @@
+// import 'react-app-polyfill/ie11'; // TODO: Please uncomment it if you need IE11 to be supported
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
