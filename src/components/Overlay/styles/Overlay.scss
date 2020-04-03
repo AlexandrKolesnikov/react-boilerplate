@@ -1,0 +1,31 @@
+@import './variables.scss';
+
+.overlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay__backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay__backdrop--primary {
+  background: $overlay-color-primary;
+}
+
+.overlay__backdrop--secondary {
+  background: $overlay-color-secondary;
+}
+
+.overlay__content {
+  position: relative;
+  z-index: 1;
+}
