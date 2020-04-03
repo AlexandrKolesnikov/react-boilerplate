@@ -1,4 +1,4 @@
-import webpack, { Plugin } from 'webpack';
+import webpack, { Plugin, RuleSetRule } from 'webpack';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import generateDevConfig from '../webpack/webpack.config';
@@ -27,11 +27,25 @@ export default ({ config }: { config: webpack.Configuration }) => {
 
   config.plugins = (config.plugins || []).concat(devConfigPlugins);
 
-  const filteredRules = module.rules.filter(rule => {
+  const filteredRules = module.rules.reduce((accumulator, rule) => {
     const ruleJson = JSON.stringify(rule);
+    const { test } = rule;
 
-    return ruleJson.indexOf('babel-loader') === -1;
-  });
+    if (test instanceof RegExp && test.test('test.svg')) {
+      rule.exclude = /\.svg$/;
+    } else if (test && test.toString().indexOf('svg')) {
+      rule.exclude = /\.svg$/;
+    }
+
+    if (ruleJson.indexOf('babel-loader') !== -1) {
+      return accumulator;
+    }
+
+    return [
+      ...accumulator,
+      rule,
+    ];
+  }, [] as RuleSetRule[]);
 
   config.module = {
     ...module,
