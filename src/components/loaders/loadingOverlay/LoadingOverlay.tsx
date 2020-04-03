@@ -1,5 +1,5 @@
 import React from 'react';
-import { Overlay, IOverlayProps } from '../../Overlay/Overlay';
+import { Overlay, IOverlayProps } from '../../overlay/Overlay';
 import { Spinner } from '../spinner/Spinner';
 
 interface ILoadingOverlayProps extends Partial<IOverlayProps>{
