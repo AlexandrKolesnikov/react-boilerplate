@@ -13,8 +13,8 @@
 
 @mixin custom-scrollbar($size, $color-thumb, $color-track: 'transparent') {
   &::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: $size;
+    height: $size;
   }
 
   &::-webkit-scrollbar-track {
@@ -23,6 +23,7 @@
 
   &::-webkit-scrollbar-thumb {
     background-color: $color-thumb;
+    border-radius: 5px;
 
     &:active {
       background-color: rgba($color-thumb, 0.7);
