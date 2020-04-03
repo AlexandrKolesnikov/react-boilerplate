@@ -13,7 +13,7 @@
     "clean": "rimraf dist",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src/ ./webpack/ ./stories/",
     "lint:fix": "npm run lint -- --fix",
-    "stylelint": "stylelint src/**/*.{scss,css}",
+    "stylelint": "stylelint ./{src,stories,.storybook}/**/*.{scss,css}",
     "stylelint:fix": "npm run stylelint -- --fix",
     "check-types": "tsc",
     "test": "jest",
