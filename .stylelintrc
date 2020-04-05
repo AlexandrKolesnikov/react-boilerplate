@@ -11,8 +11,10 @@
         "ignore": [
           "after-comment"
         ],
-        "ignore-rules": [
-          "return"
+        "ignoreAtRules": [
+          "return",
+          "media",
+          "if"
         ]
       }
     ],
@@ -155,14 +157,6 @@
       140,
       {
         "ignore": "comments"
-      }
-    ],
-    "max-nesting-depth": [
-      1,
-      {
-        "ignore": [
-          "pseudo-classes"
-        ]
       }
     ],
     "media-feature-colon-space-after": "always",
