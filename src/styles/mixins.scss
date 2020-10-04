@@ -11,7 +11,7 @@
   }
 }
 
-@mixin custom-scrollbar($size, $color-thumb, $color-track: 'transparent') {
+@mixin arcadia-custom-scrollbar($size: 0.6em, $color-thumb: #727272, $color-track: rgba(#727272, 0.3)) {
   &::-webkit-scrollbar {
     width: $size;
     height: $size;
@@ -19,6 +19,7 @@
 
   &::-webkit-scrollbar-track {
     background-color: $color-track;
+    border-radius: 0.31em;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -54,3 +55,65 @@
     color: $color;
   }
 }
+
+@mixin smooth-resize($max-size, $property: font-size, $unit: px, $min-width: $tablet-max-width, $max-width: $desktop-max-width) {
+  $max-size: strip-unit($max-size);
+  $resizeCoefficient: $min-width / $max-width;
+  $min-size: $resizeCoefficient * $max-size;
+
+  @include css-lock-by-width($min-size, $max-size, $min-width, $max-width, $property, $unit);
+}
+
+// TODO: Optimize smooth-resize-pading and smooth-resize-margin after first priority tasks (Alex Kolesnikov) BEGIN
+@mixin smooth-resize-padding($top: 0, $right: 0, $bottom: 0, $left: 0) {
+  @if $top == 0 {
+    padding-top: 0;
+  } @else {
+    @include smooth-resize($top, 'padding-top');
+  }
+
+  @if $right == 0 {
+    padding-right: 0;
+  } @else {
+    @include smooth-resize($right, 'padding-right');
+  }
+
+  @if $bottom == 0 {
+    padding-bottom: 0;
+  } @else {
+    @include smooth-resize($bottom, 'padding-bottom');
+  }
+
+  @if $left == 0 {
+    padding-left: 0;
+  } @else {
+    @include smooth-resize($left, 'padding-left');
+  }
+}
+
+@mixin smooth-resize-margin($top: 0, $right: 0, $bottom: 0, $left: 0) {
+  @if $top == 0 {
+    margin-top: 0;
+  } @else {
+    @include smooth-resize($top, 'margin-top');
+  }
+
+  @if $right == 0 {
+    margin-right: 0;
+  } @else {
+    @include smooth-resize($right, 'margin-right');
+  }
+
+  @if $bottom == 0 {
+    margin-bottom: 0;
+  } @else {
+    @include smooth-resize($bottom, 'margin-bottom');
+  }
+
+  @if $left == 0 {
+    margin-left: 0;
+  } @else {
+    @include smooth-resize($left, 'margin-left');
+  }
+}
+// TODO: Optimize smooth-resize-pading and smooth-resize-margin after first priority tasks (Alex Kolesnikov) END

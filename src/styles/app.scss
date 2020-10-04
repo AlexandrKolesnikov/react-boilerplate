@@ -1,3 +1,6 @@
+@import './variables.scss';
+@import './fonts.scss';
+
 html,
 body,
 #root {
@@ -7,5 +10,6 @@ body,
 
 body {
   @include custom-scrollbar(0.6em, #727272, rgba(#727272, 0.3));
-  font-family: 'Open Sans', sans-serif;
+  font-family: $ff-primary;
+  color: $color-firm1;
 }

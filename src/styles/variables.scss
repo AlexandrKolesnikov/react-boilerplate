@@ -12,5 +12,12 @@ $hover-opacity: 0.7;
 $active-opacity: 0.6;
 // General END
 
+// Resize BEGIN
+$desktop-max-width: 1920;
+$tablet-max-width: 1024;
+
+$content-max-width: #{$desktop-max-width}px;
+// Resize END
+
 // Z-Index BEGIN
 // Z-Index END
