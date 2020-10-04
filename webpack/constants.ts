@@ -4,7 +4,6 @@ import dotenv from 'dotenv';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import autoprefixer from 'autoprefixer';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import { IEnvironment } from './types';
 
@@ -52,10 +51,12 @@ export const moduleRules: { [key: string]: webpack.RuleSetRule } = {
       {
         loader: 'postcss-loader',
         options: {
-          plugins: [
-            autoprefixer(),
-          ],
           sourceMap: false,
+          postcssOptions: {
+            plugins: [
+              'autoprefixer',
+            ],
+          }
         },
       },
       {
@@ -149,10 +150,12 @@ export const generateConfig = (env: IEnvironment): webpack.Configuration => {
         ...process.env,
         ...parsedEnvironmentVariables,
       }),
-      new CopyWebpackPlugin([
-        { from: STATIC_DIR, to: '' },
-        { from: ASSETS_SOURCE_DIR, to: 'assets' },
-      ]),
+      new CopyWebpackPlugin({
+          patterns: [
+            { from: STATIC_DIR, to: '' },
+            { from: ASSETS_SOURCE_DIR, to: 'assets' },
+          ]
+      }),
       new MiniCssExtractPlugin({
         filename: `[name].${filesNameHash}.css`,
         chunkFilename: `[id].${filesNameHash}.css`,
