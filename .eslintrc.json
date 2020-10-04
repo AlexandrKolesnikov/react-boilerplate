@@ -9,6 +9,11 @@
     "@typescript-eslint"
   ],
   "rules": {
+    "jsx-a11y/anchor-is-valid": [ "error", {
+      "components": [ "Link" ],
+      "specialLink": [ "preventDefault", "to" ],
+      "aspects": [ "noHref", "invalidHref", "preferButton" ]
+    }],
     "@typescript-eslint/indent": ["error", 2, {
       "SwitchCase": 1,
       "ignoredNodes": ["TSTypeParameterInstantiation"]
@@ -33,6 +38,13 @@
         ]
       }
     ],
+    "lines-between-class-members": [
+      "error",
+      "always",
+      {
+        "exceptAfterSingleLine": true
+      }
+    ],
     "max-len": [
       "error",
       {
@@ -53,12 +65,18 @@
         ]
       }
     ],
+    "object-curly-spacing": ["error", "always"],
     "padding-line-between-statements": [
       1,
       {
         "blankLine": "always",
         "prev": "*",
-        "next": "return"
+        "next": [
+          "const",
+          "let",
+          "var",
+          "return"
+        ]
       },
       {
         "blankLine": "always",
@@ -170,7 +188,7 @@
         "rendering": [
           "/^render.+$/",
           "render"
-    ]
+        ]
       }
     }]
   },
