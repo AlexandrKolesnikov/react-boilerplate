@@ -1,4 +1,4 @@
-export const { API_URL } = process.env;
+export const { API_HOST } = process.env;
 
 export enum LocalStorageKeys {
   accessToken = 'accessToken',

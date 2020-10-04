@@ -1,27 +1,25 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import queryString from 'query-string';
-import { API_URL, LocalStorageKeys } from '../constants';
+import { API_HOST, LocalStorageKeys } from '../../constants';
+import { IAPIErrorResponseBody } from './types';
 
 type makeRequest = <T>(url: string, data?: any, method?: 'POST' | 'GET' | 'PUT' | 'DELETE', headers?: Headers) => Promise<AxiosResponse<T>>;
 
-export const getUrl = (path: string, queryParams: { [key: string]: string }): string => {
+export const getUrl = (path: string, queryParams: { [key: string]: any } = {}): string => {
   const search = queryString.stringify(queryParams);
 
   return (
-    `${API_URL}${path}${search ? `?${search}` : ''}`
+    `${API_HOST}${path}${search ? `?${search}` : ''}`
   );
 };
 
 export const processApiResponseError = (
-  error: AxiosError,
+  error: AxiosError<IAPIErrorResponseBody>,
   defaultErrorMessage = 'Oops! Something went wrong. Please try again later.',
   additionMessage = '',
 ) => {
-  let errorMessage = defaultErrorMessage;
-
-  if (error.response) {
-    // TODO: Implement API specific error messages ejecting
-  }
+  const { response } = error;
+  let errorMessage = response?.data?.message || defaultErrorMessage;
 
   if (additionMessage) {
     errorMessage += `\n\n${additionMessage}`;
@@ -34,9 +32,11 @@ export const processApiResponseError = (
 };
 
 export const makeRequest: makeRequest = (url, data, method = 'GET', headers = undefined) => {
+  const isFormData = data instanceof FormData;
+
   const requestHeaders = {
     accept: 'application/json',
-    'content-type': 'application/json;charset=utf-8',
+    'Content-Type': isFormData ? 'multipart/form-data' : 'application/json;charset=utf-8',
     Authorization: `Bearer ${localStorage.getItem(LocalStorageKeys.accessToken)}`,
     ...headers,
   };
@@ -44,8 +44,9 @@ export const makeRequest: makeRequest = (url, data, method = 'GET', headers = un
   const requestConfig = {
     headers: requestHeaders,
     method,
-    data: JSON.stringify(data),
+    data: isFormData ? data : JSON.stringify(data),
   };
 
-  return axios(url, requestConfig);
+  return axios(url, requestConfig)
+    .catch(processApiResponseError);
 };
