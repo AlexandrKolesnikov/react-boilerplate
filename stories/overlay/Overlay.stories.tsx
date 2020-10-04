@@ -1,6 +1,6 @@
 import React from 'react';
 import { withKnobs, select } from '@storybook/addon-knobs';
-import { Overlay, OverlayColor } from '../../src/components/overlay/Overlay';
+import { Overlay, OverlayColor } from '../../src/components/Overlay/Overlay';
 import './styles/Overlay.stories.scss';
 
 export default {

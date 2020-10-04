@@ -7,7 +7,7 @@ import { history } from './routing/history';
 import { Switch } from './routing/switch';
 import { store } from './store/store';
 import { App } from './modules/app/components/App';
-import { LoadingOverlay } from './components/loaders/loadingOverlay/LoadingOverlay';
+import { LoadingOverlay } from './components/loaders/LoadingOverlay/LoadingOverlay';
 import './styles/app.scss';
 
 const AppRoot = () => (

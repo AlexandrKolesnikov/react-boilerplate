@@ -1,7 +1,7 @@
 import React from 'react';
 import { select } from '@storybook/addon-knobs';
-import { LoadingOverlay } from '../../src/components/loaders/loadingOverlay/LoadingOverlay';
-import { OverlayColor } from '../../src/components/overlay/Overlay';
+import { LoadingOverlay } from '../../src/components/loaders/LoadingOverlay/LoadingOverlay';
+import { OverlayColor } from '../../src/components/Overlay/Overlay';
 
 export default {
   component: LoadingOverlay,

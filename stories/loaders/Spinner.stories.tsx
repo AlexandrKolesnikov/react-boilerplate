@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { text } from '@storybook/addon-knobs';
-import { Spinner } from '../../src/components/loaders/spinner/Spinner';
+import { Spinner } from '../../src/components/loaders/Spinner/Spinner';
 import './styles/Spinner.stories.scss';
 
 export default {
