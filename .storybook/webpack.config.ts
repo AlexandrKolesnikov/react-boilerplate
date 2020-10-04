@@ -27,17 +27,18 @@ export default ({ config }: { config: webpack.Configuration }) => {
 
   config.plugins = (config.plugins || []).concat(devConfigPlugins);
 
-  const filteredRules = module.rules.reduce((accumulator, rule) => {
-    const ruleJson = JSON.stringify(rule);
-    const { test } = rule;
+  const modifiedRules = module.rules.reduce((accumulator, rule) => {
+    const extensionsToBeIgnored = ['svg', 'css'];
 
-    if (test instanceof RegExp && test.test('test.svg')) {
-      rule.exclude = /\.svg$/;
-    } else if (test && test.toString().indexOf('svg')) {
-      rule.exclude = /\.svg$/;
-    }
+    extensionsToBeIgnored.forEach(extension => {
+      const regExp = new RegExp(`\\.${extension}$`);
 
-    if (ruleJson.indexOf('babel-loader') !== -1) {
+      rule.exclude = Array.isArray(rule.exclude)
+        ? [...rule.exclude, regExp]
+        : [rule.exclude || regExp, regExp];
+    });
+
+    if (JSON.stringify(rule).indexOf('babel-loader') !== -1) {
       return accumulator;
     }
 
@@ -49,7 +50,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
 
   config.module = {
     ...module,
-    rules: (filteredRules || []).concat(devModule.rules as webpack.RuleSetRule[] || []),
+    rules: (modifiedRules || []).concat(devModule.rules as webpack.RuleSetRule[] || []),
   };
 
   config.resolve = {
