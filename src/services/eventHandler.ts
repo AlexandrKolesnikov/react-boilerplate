@@ -1,30 +1,30 @@
-export const isActionKeys = (e: KeyboardEvent) => (
+export const isActionKeys = (e: React.KeyboardEvent) => (
   [46, 8, 9, 27, 13].indexOf(e.keyCode) !== -1
 );
 
-export const isCtrlOrMeta = (e: KeyboardEvent) => e.ctrlKey === true || e.metaKey === true;
+export const isCtrlOrMeta = (e: React.KeyboardEvent) => e.ctrlKey === true || e.metaKey === true;
 
-export const isCtrlOrCmdPlusA = (e: KeyboardEvent) => e.keyCode === 65 && isCtrlOrMeta(e);
+export const isCtrlOrCmdPlusA = (e: React.KeyboardEvent) => e.keyCode === 65 && isCtrlOrMeta(e);
 
-export const isCtrlOrCmdPlusC = (e: KeyboardEvent) => e.keyCode === 67 && isCtrlOrMeta(e);
+export const isCtrlOrCmdPlusC = (e: React.KeyboardEvent) => e.keyCode === 67 && isCtrlOrMeta(e);
 
-export const isCtrlOrCmdPlusV = (e: KeyboardEvent) => e.keyCode === 86 && isCtrlOrMeta(e);
+export const isCtrlOrCmdPlusV = (e: React.KeyboardEvent) => e.keyCode === 86 && isCtrlOrMeta(e);
 
-export const isCtrlOrCmdPlusX = (e: KeyboardEvent) => e.keyCode === 88 && isCtrlOrMeta(e);
+export const isCtrlOrCmdPlusX = (e: React.KeyboardEvent) => e.keyCode === 88 && isCtrlOrMeta(e);
 
-export const isNavigationKeys = (e: KeyboardEvent) => e.keyCode >= 35 && e.keyCode <= 39;
+export const isNavigationKeys = (e: React.KeyboardEvent) => e.keyCode >= 35 && e.keyCode <= 39;
 
-export const isDot = (e: KeyboardEvent) => e.key === '.';
-export const isComa = (e: KeyboardEvent) => e.key === ',';
+export const isDot = (e: React.KeyboardEvent) => e.key === '.';
+export const isComa = (e: React.KeyboardEvent) => e.key === ',';
 
-export const isNonDigitKeys = (e: KeyboardEvent) => {
+export const isNonDigitKeys = (e: React.KeyboardEvent) => {
   const { shiftKey, keyCode } = e;
 
   return (shiftKey || (keyCode < 48 || keyCode > 57)) && (keyCode < 96 || keyCode > 105);
 };
 
 export const preventNonDigitKeyEvents = (
-  e: KeyboardEvent,
+  e: React.KeyboardEvent,
   allowControlKeys = true,
   allowDot = true,
   allowComa = true,
