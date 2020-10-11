@@ -2,6 +2,7 @@
 
 # General
 .env.default
+.env
 
 # compiled output
 dist
