@@ -7,7 +7,6 @@
     "jsx": "react", // Allows JSX,
     "sourceMap": true, // Allow sourcemap support,
     "allowJs": true, // Process & infer types from .js files.,
-    "noEmit": true, // Don't emit; allow Babel to transform files.
     "strict": true, // Enable strictest settings like strictNullChecks & noImplicitAny.
     "forceConsistentCasingInFileNames": true, // Disallow inconsistently-cased references to the same file.
     "resolveJsonModule": true, // Enables ability to import *.json,

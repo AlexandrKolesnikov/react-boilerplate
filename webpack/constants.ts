@@ -22,7 +22,7 @@ export const moduleRules: { [key: string]: webpack.RuleSetRule } = {
     exclude: /node_modules/,
     use: [
       {
-        loader: 'awesome-typescript-loader',
+        loader: 'ts-loader',
       },
       {
         loader: 'eslint-loader',
