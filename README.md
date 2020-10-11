@@ -6,7 +6,7 @@ with predefined Code Quality tools and other helpful things.
 These steps are required before further steps.
 
 ### Machine Requirements
-You need to have installed:  
+You need to have installed:
 - [Node.js](https://nodejs.org/en/)
 - [NPM Package manager](https://www.npmjs.com/)
 - Cloned or downloaded version of this Project
@@ -20,7 +20,7 @@ These commands are going to help you to install all Project dependencies.
 
 ## Development Start
 To run Application in development mode you need to run `npm run dev`.
-As a result, you will get a fully completed local development environment and run a development server at the [http://localhost:3000](http://localhost:3000). 
+As a result, you will get a fully completed local development environment and run a development server at the [http://localhost:3000](http://localhost:3000).
 ```sh
 npm run dev
 ```
@@ -32,10 +32,10 @@ code that you can use to deploy it to your hosting. You can take the result at t
 npm run build
 ```
 
-## Useful Commands 
+## Useful Commands
 `npm run build:debug` -
 Runs build of the optimized production version with enabled debug mode of the loaders using [webpack --debug](https://webpack.js.org/api/cli/#debug-options).
- 
+
 `npm run serve` -
 Runs local HTTP server targeting `~/dist/` directory as public at the [http://localhost:4000](http://localhost:4000).
 
@@ -121,7 +121,8 @@ Project uses environment variables to be well customizable across different envi
 * Values change frequently and are highly dynamic.
 * Environment variables can be changed easily - especially when running in CI/CD.
 
-All environments files should be placed in the `~/environments/` directory. Then you can just specify a environment file name during build time via environment variable `ENVIRONMENT_FILE_NAME`.
+Environment variables can be set in the `~/.env`. There is `~/.env.default.` included by default to the repository, so feel free to rename it to `~/.env` and specify ENV variables which you need, cause `~/.env` will not be pushed to the repository.
+Note: `~/.env.default` is ignored by build by default.
 
 #### Usage example:
 ![Environment Settings usage example in the package.json](docs/assets/readmemd/env-settings.png)

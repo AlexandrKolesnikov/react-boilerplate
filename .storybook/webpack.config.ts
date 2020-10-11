@@ -2,13 +2,8 @@ import webpack, { Plugin, RuleSetRule } from 'webpack';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import generateDevConfig from '../webpack/webpack.config';
-import { IEnvironment } from '../webpack/types';
 
-const env: IEnvironment = {
-  ENVIRONMENT_FILE_NAME: '.env.development'
-};
-
-const devConfig = generateDevConfig(env);
+const devConfig = generateDevConfig();
 
 const pluginsToBeIgnored = [
   CopyWebpackPlugin,

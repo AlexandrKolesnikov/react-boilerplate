@@ -3,10 +3,9 @@ import TerserPlugin from 'terser-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import { generateConfig as generateBasicConfig, moduleRules } from './constants';
-import { IEnvironment } from './types';
 
-export default (env: IEnvironment): webpack.Configuration => {
-  const basicConfig = generateBasicConfig(env);
+export default (): webpack.Configuration => {
+  const basicConfig = generateBasicConfig();
   const { module: basicConfigModule = {} as webpack.Module } = basicConfig;
 
   return {

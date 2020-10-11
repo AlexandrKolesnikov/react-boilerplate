@@ -1,12 +1,11 @@
 import webpack from 'webpack';
 import { generateConfig as generateBasicConfig, moduleRules, STATIC_DIR } from './constants';
-import { IEnvironment } from './types';
 
 const DEV_SERVER_HOST = 'localhost';
 const DEV_SERVER_PORT = 3000;
 
-export default (env: IEnvironment): webpack.Configuration => {
-  const basicConfig = generateBasicConfig(env) || {};
+export default (): webpack.Configuration => {
+  const basicConfig = generateBasicConfig() || {};
   const { module: basicConfigModule = {} as webpack.Module } = basicConfig;
 
   const entry = [

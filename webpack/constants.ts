@@ -5,7 +5,6 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
-import { IEnvironment } from './types';
 
 const FONT_ASSET_MAX_SIZE = 8192;
 const IMAGE_ASSET_MAX_SIZE = 8192;
@@ -111,10 +110,8 @@ export const moduleRules: { [key: string]: webpack.RuleSetRule } = {
   },
 };
 
-export const generateConfig = (env: IEnvironment): webpack.Configuration => {
-  const environmentFileName = env.ENVIRONMENT_FILE_NAME;
-  const environmentFilePath = path.resolve(__dirname, `../environments/${environmentFileName}`);
-  const parsedEnvironmentVariables = dotenv.config({ path: environmentFilePath }).parsed || {};
+export const generateConfig = (): webpack.Configuration => {
+  const parsedEnvironmentVariables = dotenv.config().parsed || {};
 
   const isProduction = parsedEnvironmentVariables.NODE_ENV === 'production';
   const filesNameHash = isProduction ? '[contenthash:8]' : '[hash]';
