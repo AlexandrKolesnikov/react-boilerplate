@@ -50,7 +50,6 @@ export const moduleRules: { [key: string]: webpack.RuleSetRule } = {
       {
         loader: 'postcss-loader',
         options: {
-          sourceMap: false,
           postcssOptions: {
             plugins: [
               'autoprefixer',
@@ -159,6 +158,7 @@ export const generateConfig = (): webpack.Configuration => {
       }),
       new HtmlWebpackPlugin({
         template: path.resolve(STATIC_DIR, './index.html'),
+        baseUrl: process.env.BASE_URL,
         filename: 'index.html',
         inject: true,
         ...(isProduction ? {

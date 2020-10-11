@@ -1,7 +1,7 @@
 import webpack from 'webpack';
 import { generateConfig as generateBasicConfig, moduleRules, STATIC_DIR } from './constants';
 
-const DEV_SERVER_HOST = 'localhost';
+const DEV_SERVER_HOST = '0.0.0.0';
 const DEV_SERVER_PORT = 3000;
 
 export default (): webpack.Configuration => {
@@ -31,6 +31,7 @@ export default (): webpack.Configuration => {
       compress: true,
       overlay: true,
       open: true,
+      openPage: `http://localhost:${DEV_SERVER_PORT}`,
       host: DEV_SERVER_HOST,
       contentBase: STATIC_DIR,
       publicPath: `http://${DEV_SERVER_HOST}:${DEV_SERVER_PORT}`,
