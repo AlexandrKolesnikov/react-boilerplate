@@ -13,13 +13,13 @@
     "resolveJsonModule": true, // Enables ability to import *.json,
     "isolatedModules": true, // Disallow features that require cross-file information for emit.
     "esModuleInterop": true, // Import non-ES modules as default imports.
-    "skipLibCheck": true // Skips checking of the node_modules
+    "skipLibCheck": true, // Skips checking of the node_modules
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ]
   },
-  "lib": [
-    "dom",
-    "dom.iterable",
-    "esnext"
-  ],
   "include": [
     "**/*"
   ],
