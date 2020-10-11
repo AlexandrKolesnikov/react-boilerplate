@@ -1,33 +1,14 @@
-import { Component } from 'react';
+import React from 'react';
 
-interface IWithPermissionsProps {
-  alternativeContent: React.ReactNode
-}
+export const withPermissions = (predicate: () => boolean, renderFallback: () => React.ReactElement) => (
+  <IComponentProps extends object>(Component: React.ComponentType<IComponentProps>): React.FC<IComponentProps> => (props: IComponentProps) => {
 
-export const withPermissions = (predicate: () => boolean) => {
-  class WithPermissions extends Component<IWithPermissionsProps> {
-    static defaultProps = {
-      alternativeContent: null,
-    };
-
-    static get isPermitted() {
-      return typeof predicate === 'function' && predicate();
+    if (!predicate()) {
+      return renderFallback();
     }
 
-    render() {
-      const { children, alternativeContent } = this.props;
-
-      if (WithPermissions.isPermitted) {
-        return (
-          children
-        );
-      }
-
-      return (
-        alternativeContent
-      );
-    }
+    return (
+      <Component {...props} />
+    );
   }
-
-  return WithPermissions;
-};
+);
