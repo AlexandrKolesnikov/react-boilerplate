@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns#">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -8,10 +8,31 @@
     content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
   />
   <meta name="theme-color" content="#000000" />
-  <meta name="description" content="React Boilerplate">
+
+  <!-- Primary Meta Tags -->
+  <title>React Boilerplate</title>
+  <meta name="title" content="React Boilerplate">
+  <meta name="description" content="React Boilerplate - Please don't forget to replace it by your own description">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="twitter:url" content="<%= htmlWebpackPlugin.options.baseUrl %>">
+  <meta property="og:title" content="React Boilerplate">
+  <meta property="og:description" content="React Boilerplate - Please don't forget to replace it by your own description">
+  <meta property="og:image" content="<%= htmlWebpackPlugin.options.baseUrl %>/assets/images/ogWallpaper.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="<%= htmlWebpackPlugin.options.baseUrl %>">
+  <meta property="twitter:title" content="React Boilerplate">
+  <meta property="twitter:description" content="React Boilerplate - Please don't forget to replace it by your own description">
+  <meta property="twitter:image" content="<%= htmlWebpackPlugin.options.baseUrl %>/assets/images/ogWallpaper.jpg">
+
+  <!-- Favicon -->
   <link rel="shortcut icon" href="/assets/images/favicons/favicon.ico">
   <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-32x32.png">
-  <title>React Boilerplate</title>
+
+  <!-- General styles -->
   <link rel="stylesheet" property="stylesheet" href="./css/reset.css">
   <style>
   /* stylelint-disable at-rule-no-vendor-prefix */
