@@ -9,7 +9,7 @@ body,
 }
 
 body {
-  @include custom-scrollbar(0.6em, #727272, rgba(#727272, 0.3));
+  @include custom-scrollbar();
   font-family: $ff-primary;
   color: $color-firm1;
 }

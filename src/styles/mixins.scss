@@ -11,7 +11,7 @@
   }
 }
 
-@mixin arcadia-custom-scrollbar($size: 0.6em, $color-thumb: #727272, $color-track: rgba(#727272, 0.3)) {
+@mixin custom-scrollbar($size: 0.6em, $color-thumb: #727272, $color-track: rgba(#727272, 0.3)) {
   &::-webkit-scrollbar {
     width: $size;
     height: $size;
