@@ -31,7 +31,6 @@
       {
         "devDependencies": [
           "webpack/**/*.*",
-          "server/**/*.*",
           "stories/**/*.*",
           "**/*.test.*",
           "setupTests.ts"
@@ -67,7 +66,7 @@
     ],
     "object-curly-spacing": ["error", "always"],
     "padding-line-between-statements": [
-      1,
+      "error",
       {
         "blankLine": "always",
         "prev": "*",
@@ -75,7 +74,9 @@
           "const",
           "let",
           "var",
-          "return"
+          "return",
+          "switch",
+          "if"
         ]
       },
       {
@@ -126,6 +127,17 @@
       }
     ],
     "react/jsx-props-no-spreading": 0,
+    "react/jsx-sort-props": [
+      1,
+      {
+        "callbacksLast": true,
+        "shorthandLast": true,
+        "ignoreCase": true,
+        "noSortAlphabetically": true,
+        "reservedFirst": true
+      }
+    ],
+    "react/jsx-key": 2,
     "react/static-property-placement": [
       "error",
       "static public field"
@@ -143,6 +155,7 @@
         "assert": "nesting"
       }
     ],
+    "react/react-in-jsx-scope": "off",
     "react/sort-comp": ["error", {
       "order": [
         "static-variables",
@@ -196,7 +209,8 @@
     {
       "files": ["**/*.tsx"],
       "rules": {
-        "react/prop-types": "off"
+        "react/prop-types": "off",
+        "react/require-default-props": "off"
       }
     }
   ],

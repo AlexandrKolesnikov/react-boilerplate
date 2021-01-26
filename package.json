@@ -5,6 +5,7 @@
   "main": "index.tsx",
   "author": "Alexandr Kolesnikov",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "dev": "npm run set-ts-node-config -- webpack-dev-server --config webpack/webpack.config.ts",
     "build": "npm run clean && npm run set-ts-node-config -- webpack --config webpack/webpack.production.config.ts --progress --profile --colors",
@@ -13,7 +14,7 @@
     "clean": "rimraf dist",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src/ ./webpack/ ./stories/",
     "lint:fix": "npm run lint -- --fix",
-    "stylelint": "stylelint ./{src,stories,.storybook}/**/*.{scss,css}",
+    "stylelint": "stylelint \"./{src,stories,.storybook}/**/*.{scss,css}\"",
     "stylelint:fix": "npm run stylelint -- --fix",
     "check-types": "tsc",
     "test": "jest",
