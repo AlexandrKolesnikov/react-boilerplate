@@ -1,4 +1,4 @@
-interface SvgComponent extends React.FunctionComponent<React.SVGAttributes<SVGElement>> {}
+interface SvgComponent extends React.FunctionComponent<React.SVGProps> {}
 
 declare module '*.svg' {
   const value: SvgComponent;
