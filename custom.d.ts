@@ -41,6 +41,19 @@ declare module '*.json' {
 
   export default value;
 }
+
+declare module '*.css' {
+  const value: any;
+
+  export default value;
+}
+
+declare module '*.scss' {
+  const value: any;
+
+  export default value;
+}
+
 declare namespace NodeJS {
   interface ProcessEnv {
     NODE_ENV: string
