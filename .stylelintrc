@@ -28,6 +28,7 @@
       true,
       {
         "ignoreAtRules": [
+          "use",
           "function",
           "if",
           "else",
