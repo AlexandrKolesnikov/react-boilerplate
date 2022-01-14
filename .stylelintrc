@@ -239,7 +239,7 @@
     "selector-pseudo-class-no-unknown": [
       true,
       {
-        "ignorePseudoClasses": ["global"]
+        "ignorePseudoClasses": ["global", "export"]
       }
     ],
     "selector-pseudo-class-parentheses-space-inside": "never",
