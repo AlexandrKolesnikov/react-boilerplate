@@ -79,7 +79,6 @@ Builds static Storybook to the `~/storybook-static/`
 * [React](https://reactjs.org) - A JavaScript library for building user interfaces.
 * [Redux](https://redux.js.org) - State management of the Application.
 * [Redux-Saga](https://redux-saga.js.org) - Redux middleware library, that is designed to make handling side effects in your Redux Application nice and simple.
-* [Redux-Form](https://redux-form.com) - Helps to flexible and predictable manage forms state in Redux.
 * [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser. Helps to organize all HTTP request of the Application.
 * [SASS (SCSS syntax)](https://sass-lang.com) - CSS pre-processor that helps to organize styles of the Application.
 
